@@ -291,11 +291,6 @@
 
 
 <script>
-// ============================================================
-// AQUÍ VAN TUS AVERÍAS
-// Añade/edita aquí. Cuando tengas vídeos, pon la URL de YouTube.
-// Si no hay vídeo aún, deja url: ""
-// ============================================================
 const AVERIAS = [
   {
     id: "001",
@@ -1399,6 +1394,7 @@ window.addEventListener("popstate", () => {
       { etiqueta: "🧽 Limpiar sifón paso a paso", titulo: "Limpiar sifón fregadero", canal: "Reparaciones del Hogar", duracion: "Ver enlace", url: "https://www.youtube.com/watch?v=QtOXr7AN2Kc" },
     ]
   },
+
 // Inicio — si viene con ?averia=001 desde el PDF, abre directamente esa avería
 const params = new URLSearchParams(window.location.search);
 const averiaParam = params.get("averia");
