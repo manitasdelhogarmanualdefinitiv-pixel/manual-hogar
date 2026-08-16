@@ -6,257 +6,47 @@
   <title>Manual Definitivo del Hogar — Centro de Recursos</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f5f4f1;
-      color: #1a1a1a;
-    }
-
-    /* HEADER */
-    .header {
-      background: #1c3a1c;
-      padding: 20px 16px 16px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-    .header-brand {
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #7ab87a;
-      margin-bottom: 6px;
-    }
-    .header-title {
-      font-size: 18px;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 12px;
-    }
-    .search-wrap {
-      position: relative;
-    }
-    .search-input {
-      width: 100%;
-      padding: 11px 16px 11px 40px;
-      border-radius: 10px;
-      border: none;
-      font-size: 15px;
-      background: rgba(255,255,255,0.12);
-      color: #fff;
-      outline: none;
-    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f4f1; color: #1a1a1a; }
+    .header { background: #1c3a1c; padding: 20px 16px 16px; text-align: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+    .header-brand { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #7ab87a; margin-bottom: 6px; }
+    .header-title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .search-wrap { position: relative; }
+    .search-input { width: 100%; padding: 11px 16px 11px 40px; border-radius: 10px; border: none; font-size: 15px; background: rgba(255,255,255,0.12); color: #fff; outline: none; }
     .search-input::placeholder { color: rgba(255,255,255,0.5); }
-    .search-icon {
-      position: absolute;
-      left: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: rgba(255,255,255,0.5);
-      font-size: 16px;
-      pointer-events: none;
-    }
-
-    /* VISTA LISTA — página principal */
+    .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.5); font-size: 16px; pointer-events: none; }
     #vista-lista { display: block; }
     #vista-averia { display: none; }
-
-    .estancia-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #888;
-      padding: 20px 16px 8px;
-    }
-
-    .averia-item {
-      background: #fff;
-      margin: 0 12px 8px;
-      border-radius: 12px;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.07);
-      transition: box-shadow 0.15s;
-      text-decoration: none;
-      color: inherit;
-    }
-    .averia-item:active { box-shadow: 0 0 0 rgba(0,0,0,0); background: #f0f0f0; }
-
-    .averia-id-badge {
-      font-size: 11px;
-      font-weight: 800;
-      color: #7ab87a;
-      min-width: 28px;
-      letter-spacing: 0.5px;
-    }
+    .estancia-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #888; padding: 20px 16px 8px; }
+    .averia-item { background: #fff; margin: 0 12px 8px; border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.07); }
+    .averia-item:active { background: #f0f0f0; }
+    .averia-id-badge { font-size: 11px; font-weight: 800; color: #7ab87a; min-width: 28px; }
     .averia-info { flex: 1; }
-    .averia-nombre {
-      font-size: 15px;
-      font-weight: 600;
-      color: #1a1a1a;
-      line-height: 1.3;
-    }
-    .averia-tags {
-      display: flex;
-      gap: 6px;
-      margin-top: 4px;
-      flex-wrap: wrap;
-    }
-    .tag {
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 20px;
-      font-weight: 600;
-    }
+    .averia-nombre { font-size: 15px; font-weight: 600; color: #1a1a1a; line-height: 1.3; }
+    .averia-tags { display: flex; gap: 6px; margin-top: 4px; flex-wrap: wrap; }
+    .tag { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 600; }
     .tag-estancia { background: #e6f0e6; color: #2d5a2d; }
     .tag-nivel-facil { background: #e8f5e9; color: #2e7d32; }
     .tag-nivel-media { background: #fff3e0; color: #e65100; }
     .tag-nivel-dificil { background: #fce4ec; color: #c62828; }
     .tag-sin-video { background: #f3f3f3; color: #aaa; }
-
-    .averia-arrow {
-      color: #ccc;
-      font-size: 18px;
-    }
-
-    /* VISTA DETALLE — avería individual */
-    .back-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 14px 16px;
-      font-size: 14px;
-      color: #7ab87a;
-      font-weight: 600;
-      cursor: pointer;
-      background: #fff;
-      border-bottom: 1px solid #eee;
-    }
-
-    .detalle-hero {
-      background: #fff;
-      padding: 20px 16px 18px;
-      border-bottom: 1px solid #eee;
-    }
-    .detalle-id {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: #7ab87a;
-      margin-bottom: 6px;
-    }
-    .detalle-titulo {
-      font-size: 22px;
-      font-weight: 800;
-      color: #1c3a1c;
-      line-height: 1.2;
-      margin-bottom: 10px;
-    }
-
-    .sintomas-box {
-      margin: 16px 16px 0;
-      background: #fffbec;
-      border-left: 4px solid #f0c040;
-      border-radius: 0 8px 8px 0;
-      padding: 12px 14px;
-    }
-    .sintomas-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #b8920a;
-      margin-bottom: 4px;
-    }
-    .sintomas-text {
-      font-size: 14px;
-      color: #5a4400;
-      line-height: 1.5;
-    }
-
-    .videos-seccion {
-      padding: 20px 16px 8px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #888;
-    }
-
-    .video-card {
-      background: #fff;
-      margin: 0 12px 10px;
-      border-radius: 12px;
-      padding: 16px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.07);
-    }
-    .video-etiqueta {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #7ab87a;
-      margin-bottom: 6px;
-    }
-    .video-titulo {
-      font-size: 15px;
-      font-weight: 600;
-      color: #1a1a1a;
-      line-height: 1.4;
-      margin-bottom: 8px;
-    }
-    .video-meta {
-      display: flex;
-      gap: 12px;
-      font-size: 13px;
-      color: #999;
-      margin-bottom: 12px;
-    }
-    .btn-ver {
-      display: block;
-      background: #1c3a1c;
-      color: #fff;
-      text-align: center;
-      padding: 13px;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 700;
-      text-decoration: none;
-      letter-spacing: 0.5px;
-    }
+    .averia-arrow { color: #ccc; font-size: 18px; }
+    .back-btn { display: flex; align-items: center; gap: 6px; padding: 14px 16px; font-size: 14px; color: #7ab87a; font-weight: 600; cursor: pointer; background: #fff; border-bottom: 1px solid #eee; }
+    .detalle-hero { background: #fff; padding: 20px 16px 18px; border-bottom: 1px solid #eee; }
+    .detalle-id { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: #7ab87a; margin-bottom: 6px; }
+    .detalle-titulo { font-size: 22px; font-weight: 800; color: #1c3a1c; line-height: 1.2; margin-bottom: 10px; }
+    .sintomas-box { margin: 16px 16px 0; background: #fffbec; border-left: 4px solid #f0c040; border-radius: 0 8px 8px 0; padding: 12px 14px; }
+    .sintomas-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #b8920a; margin-bottom: 4px; }
+    .sintomas-text { font-size: 14px; color: #5a4400; line-height: 1.5; }
+    .videos-seccion { padding: 20px 16px 8px; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #888; }
+    .video-card { background: #fff; margin: 0 12px 10px; border-radius: 12px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.07); }
+    .video-etiqueta { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #7ab87a; margin-bottom: 6px; }
+    .video-titulo { font-size: 15px; font-weight: 600; color: #1a1a1a; line-height: 1.4; margin-bottom: 8px; }
+    .video-meta { display: flex; gap: 12px; font-size: 13px; color: #999; margin-bottom: 12px; }
+    .btn-ver { display: block; background: #1c3a1c; color: #fff; text-align: center; padding: 13px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; letter-spacing: 0.5px; }
     .btn-ver:active { background: #2d5a2d; }
-
-    .sin-video-msg {
-      margin: 12px 16px;
-      background: #f9f9f9;
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-      color: #bbb;
-      font-size: 14px;
-    }
-
-    .footer {
-      padding: 24px 16px 32px;
-      text-align: center;
-      font-size: 11px;
-      color: #ccc;
-      line-height: 1.7;
-    }
-
-    .no-resultados {
-      text-align: center;
-      padding: 48px 16px;
-      color: #bbb;
-      font-size: 15px;
-    }
+    .sin-video-msg { margin: 12px 16px; background: #f9f9f9; border-radius: 10px; padding: 20px; text-align: center; color: #bbb; font-size: 14px; }
+    .footer { padding: 24px 16px 32px; text-align: center; font-size: 11px; color: #ccc; line-height: 1.7; }
+    .no-resultados { text-align: center; padding: 48px 16px; color: #bbb; font-size: 15px; }
   </style>
 </head>
 <body>
@@ -265,746 +55,1413 @@
   <div class="header-brand">Manual Definitivo del Hogar</div>
   <div class="header-title">Centro de Recursos</div>
   <div class="search-wrap">
-    <span class="search-icon">🔍</span>
-    <input
-      class="search-input"
-      type="text"
-      id="buscador"
-      placeholder="Busca una avería..."
-      oninput="filtrar()"
-    >
+    <span class="search-icon">&#128269;</span>
+    <input class="search-input" type="text" id="buscador" placeholder="Busca una averia..." oninput="filtrar()">
   </div>
 </div>
 
-<!-- VISTA LISTA -->
 <div id="vista-lista"></div>
 
-<!-- VISTA DETALLE -->
 <div id="vista-averia">
-  <div class="back-btn" onclick="volverLista()">← Todas las averías</div>
+  <div class="back-btn" onclick="volverLista()">&#8592; Todas las averias</div>
   <div id="detalle-contenido"></div>
   <div class="footer">
-    Los vídeos pertenecen a sus respectivos autores y canales.<br>
-    El Manual Definitivo del Hogar únicamente enlaza recursos externos como apoyo complementario.
+    Los recursos pertenecen a sus respectivos autores y plataformas.<br>
+    El Manual unicamente los selecciona y enlaza como material complementario.
   </div>
 </div>
-
 
 <script>
 const AVERIAS = [
   {
-    id: "001",
-    estancia: "Cocina",
-    nombre: "El fregadero gotea",
-    sintomas: "Gotea el grifo, hay agua bajo el fregadero o humedad en la pared. El origen puede ser una junta, el sifón, un latiguillo o el propio grifo.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🚰 Gotea el grifo", titulo: "Grifo monomando gotea — cómo desmontarlo y repararlo", canal: "FONTANERIAcaceres.es", duracion: "Vídeo completo", url: "https://www.youtube.com/watch?v=5xTkh0moiM8" },
-      { etiqueta: "💧 Pierde por latiguillo o llave", titulo: "Reparar fuga en latiguillo paso a paso", canal: "BricoFácil Estudios", duracion: "Vídeo completo", url: "https://www.youtube.com/watch?v=cgNZWYTetrQ" },
-      { etiqueta: "🔧 Pierde debajo al usar el fregadero", titulo: "Cómo reparar un sifón que pierde agua", canal: "ManoMano", duracion: "Vídeo + artículo", url: "https://www.manomano.es/consejos/como-reparar-un-sifon-que-se-sale-7892" },
+    "id": "001",
+    "estancia": "Cocina",
+    "nombre": "El fregadero gotea",
+    "sintomas": "Gotea el grifo, hay agua bajo el fregadero o humedad en la pared. El origen puede ser una junta, el sifón, un latiguillo o el propio grifo.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "🚰 Gotea el grifo",
+        "titulo": "Grifo monomando gotea — cómo desmontarlo y repararlo",
+        "canal": "FONTANERIAcaceres.es",
+        "duracion": "Vídeo completo",
+        "url": "https://www.youtube.com/watch?v=5xTkh0moiM8"
+      },
+      {
+        "etiqueta": "💧 Pierde por latiguillo o llave",
+        "titulo": "Reparar fuga en latiguillo paso a paso",
+        "canal": "BricoFácil Estudios",
+        "duracion": "Vídeo completo",
+        "url": "https://www.youtube.com/watch?v=cgNZWYTetrQ"
+      },
+      {
+        "etiqueta": "🔧 Pierde debajo al usar el fregadero",
+        "titulo": "Cómo reparar un sifón que pierde agua",
+        "canal": "ManoMano",
+        "duracion": "Vídeo + artículo",
+        "url": "https://www.manomano.es/consejos/como-reparar-un-sifon-que-se-sale-7892"
+      }
     ]
   },
   {
-    id: "002",
-    estancia: "Cocina",
-    nombre: "El fregadero huele mal",
-    sintomas: "Olor desagradable que sube por el desagüe, constante o al usar el agua. Puede ser el sifón seco, sucio o mal montado.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "💧 Mejora al correr agua / huele siempre", titulo: "Malos olores persistentes: causas y soluciones", canal: "Bricocrack", duracion: "Vídeo completo", url: "https://www.youtube.com/watch?v=SlBkYAhe04s" },
-      { etiqueta: "🧽 Cómo limpiar el sifón paso a paso", titulo: "Limpiar sifón fregadero", canal: "Reparaciones del Hogar", duracion: "Vídeo completo", url: "https://www.youtube.com/watch?v=QtOXr7AN2Kc" },
-      { etiqueta: "📖 Guía de limpieza y montaje", titulo: "Cómo limpiar el fregadero y combatir malos olores", canal: "ALDI España", duracion: "Artículo ilustrado", url: "https://www.aldi.es/inspirate/hogar/como-limpiar-fregadero-combatir-malos-olores.html" },
+    "id": "002",
+    "estancia": "Cocina",
+    "nombre": "El fregadero huele mal",
+    "sintomas": "Olor desagradable que sube por el desagüe, constante o al usar el agua. Puede ser el sifón seco, sucio o mal montado.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "💧 Mejora al correr agua / huele siempre",
+        "titulo": "Malos olores persistentes: causas y soluciones",
+        "canal": "Bricocrack",
+        "duracion": "Vídeo completo",
+        "url": "https://www.youtube.com/watch?v=SlBkYAhe04s"
+      },
+      {
+        "etiqueta": "🧽 Cómo limpiar el sifón paso a paso",
+        "titulo": "Limpiar sifón fregadero",
+        "canal": "Reparaciones del Hogar",
+        "duracion": "Vídeo completo",
+        "url": "https://www.youtube.com/watch?v=QtOXr7AN2Kc"
+      },
+      {
+        "etiqueta": "📖 Guía de limpieza y montaje",
+        "titulo": "Cómo limpiar el fregadero y combatir malos olores",
+        "canal": "ALDI España",
+        "duracion": "Artículo ilustrado",
+        "url": "https://www.aldi.es/inspirate/hogar/como-limpiar-fregadero-combatir-malos-olores.html"
+      }
     ]
   },
   {
-    id: "003",
-    estancia: "Cocina",
-    nombre: "El fregadero desagua lentamente",
-    sintomas: "El agua todavía baja pero tarda más de lo normal. Suele indicar acumulación de grasa o suciedad en el sifón.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🧽 Limpiar sifón y desatascar", titulo: "Cómo limpiar un sifón y desatascar el fregadero", canal: "Leroy Merlin España", duracion: "Guía completa", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html" },
-      { etiqueta: "🔧 Desatascar tuberías", titulo: "Cómo desatascar las tuberías", canal: "Leroy Merlin España", duracion: "Guía completa", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-desatascar-las-tuberias.html" },
-      { etiqueta: "🎥 Vídeo específico del sifón", titulo: "Cómo limpiar sifón fregadero / recuperar objetos", canal: "DFS-BRICOLAJE", duracion: "Vídeo completo", url: "https://www.youtube.com/watch?v=JfdKIJpOmas" },
+    "id": "003",
+    "estancia": "Cocina",
+    "nombre": "El fregadero desagua lentamente",
+    "sintomas": "El agua todavía baja pero tarda más de lo normal. Suele indicar acumulación de grasa o suciedad en el sifón.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "🧽 Limpiar sifón y desatascar",
+        "titulo": "Cómo limpiar un sifón y desatascar el fregadero",
+        "canal": "Leroy Merlin España",
+        "duracion": "Guía completa",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html"
+      },
+      {
+        "etiqueta": "🔧 Desatascar tuberías",
+        "titulo": "Cómo desatascar las tuberías",
+        "canal": "Leroy Merlin España",
+        "duracion": "Guía completa",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-desatascar-las-tuberias.html"
+      },
+      {
+        "etiqueta": "🎥 Vídeo específico del sifón",
+        "titulo": "Cómo limpiar sifón fregadero / recuperar objetos",
+        "canal": "DFS-BRICOLAJE",
+        "duracion": "Vídeo completo",
+        "url": "https://www.youtube.com/watch?v=JfdKIJpOmas"
+      }
     ]
   },
   {
-    id: "004",
-    estancia: "Cocina",
-    nombre: "El fregadero está completamente atascado",
-    sintomas: "El agua queda estancada o apenas se mueve. El atasco puede estar en el sifón o más dentro de la tubería.",
-    nivel: "Intermedio",
-    videos: [
-      { etiqueta: "🧽 Sifón y atasco profundo", titulo: "Cómo limpiar un sifón y desatascar el fregadero", canal: "Leroy Merlin España", duracion: "Guía completa", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html" },
-      { etiqueta: "🎥 Método bomba hidráulica", titulo: "Cómo desatascar fregadero — fabricamos una bomba hidráulica", canal: "YouTube", duracion: "Vídeo completo", url: "https://www.youtube.com/watch?v=InAG67x2Djc" },
-      { etiqueta: "📖 Trucos sencillos y baratos", titulo: "Cómo desatascar un fregadero: trucos sencillos, baratos y rápidos", canal: "idealista/news", duracion: "Artículo 2025", url: "https://www.idealista.com/news/finanzas/hogar/2025/08/10/853575-como-desatascar-un-fregadero-trucos-sencillos-baratos-y-rapidos" },
+    "id": "004",
+    "estancia": "Cocina",
+    "nombre": "El fregadero está completamente atascado",
+    "sintomas": "El agua queda estancada o apenas se mueve. El atasco puede estar en el sifón o más dentro de la tubería.",
+    "nivel": "Intermedio",
+    "videos": [
+      {
+        "etiqueta": "🧽 Sifón y atasco profundo",
+        "titulo": "Cómo limpiar un sifón y desatascar el fregadero",
+        "canal": "Leroy Merlin España",
+        "duracion": "Guía completa",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html"
+      },
+      {
+        "etiqueta": "🎥 Método bomba hidráulica",
+        "titulo": "Cómo desatascar fregadero — fabricamos una bomba hidráulica",
+        "canal": "YouTube",
+        "duracion": "Vídeo completo",
+        "url": "https://www.youtube.com/watch?v=InAG67x2Djc"
+      },
+      {
+        "etiqueta": "📖 Trucos sencillos y baratos",
+        "titulo": "Cómo desatascar un fregadero: trucos sencillos, baratos y rápidos",
+        "canal": "idealista/news",
+        "duracion": "Artículo 2025",
+        "url": "https://www.idealista.com/news/finanzas/hogar/2025/08/10/853575-como-desatascar-un-fregadero-trucos-sencillos-baratos-y-rapidos"
+      }
     ]
   },
   {
-    id: "005",
-    estancia: "Cocina",
-    nombre: "Sale poca agua del grifo",
-    sintomas: "El caudal del grifo es muy débil o ha bajado de repente. Puede ser el aireador obstruido, una llave cerrada o baja presión general.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🔧 La prueba más rápida", titulo: "Cómo limpiar el aireador de los grifos", canal: "YouTube", duracion: "Vídeo completo", url: "https://www.youtube.com/watch?v=b-c9DPoqn-A" },
-      { etiqueta: "⚡ Vídeo corto 2 minutos", titulo: "LIMPIAR AIREADOR DEL GRIFO", canal: "Iñaki Dieguez", duracion: "~2 min", url: "https://www.youtube.com/watch?v=kUEMfxnR82E" },
-      { etiqueta: "📖 Por qué baja el caudal", titulo: "¿Sabes cómo limpiar el aireador del grifo?", canal: "Grifería Clever", duracion: "Artículo", url: "https://ideasyconsejos.griferiaclever.com/sabes-como-limpiar-el-aireador-del-grifo-te-lo-contamos/" },
+    "id": "005",
+    "estancia": "Cocina",
+    "nombre": "Sale poca agua del grifo",
+    "sintomas": "El caudal del grifo es muy débil o ha bajado de repente. Puede ser el aireador obstruido, una llave cerrada o baja presión general.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "🔧 La prueba más rápida",
+        "titulo": "Cómo limpiar el aireador de los grifos",
+        "canal": "YouTube",
+        "duracion": "Vídeo completo",
+        "url": "https://www.youtube.com/watch?v=b-c9DPoqn-A"
+      },
+      {
+        "etiqueta": "⚡ Vídeo corto 2 minutos",
+        "titulo": "LIMPIAR AIREADOR DEL GRIFO",
+        "canal": "Iñaki Dieguez",
+        "duracion": "~2 min",
+        "url": "https://www.youtube.com/watch?v=kUEMfxnR82E"
+      },
+      {
+        "etiqueta": "📖 Por qué baja el caudal",
+        "titulo": "¿Sabes cómo limpiar el aireador del grifo?",
+        "canal": "Grifería Clever",
+        "duracion": "Artículo",
+        "url": "https://ideasyconsejos.griferiaclever.com/sabes-como-limpiar-el-aireador-del-grifo-te-lo-contamos/"
+      }
     ]
   },
   {
-    id: "006",
-    estancia: "Cocina",
-    nombre: "El grifo salpica o el chorro sale irregular",
-    sintomas: "El agua sale en varias direcciones, torcida o salpicando. Suele ser el aireador obstruido por cal o sedimentos.",
-    nivel: "Muy fácil",
-    videos: [
-      { etiqueta: "🔧 Causa principal: el aireador", titulo: "Cómo limpiar el aireador de los grifos", canal: "YouTube", duracion: "Vídeo completo", url: "https://www.youtube.com/watch?v=b-c9DPoqn-A" },
-      { etiqueta: "⚡ Vídeo corto 2 minutos", titulo: "LIMPIAR AIREADOR DEL GRIFO", canal: "Iñaki Dieguez", duracion: "~2 min", url: "https://www.youtube.com/watch?v=kUEMfxnR82E" },
-      { etiqueta: "📖 Cómo uniformiza el chorro", titulo: "Limpiar el aireador del grifo", canal: "Grifería Clever", duracion: "Artículo", url: "https://ideasyconsejos.griferiaclever.com/sabes-como-limpiar-el-aireador-del-grifo-te-lo-contamos/" },
+    "id": "006",
+    "estancia": "Cocina",
+    "nombre": "El grifo salpica o el chorro sale irregular",
+    "sintomas": "El agua sale en varias direcciones, torcida o salpicando. Suele ser el aireador obstruido por cal o sedimentos.",
+    "nivel": "Muy fácil",
+    "videos": [
+      {
+        "etiqueta": "🔧 Causa principal: el aireador",
+        "titulo": "Cómo limpiar el aireador de los grifos",
+        "canal": "YouTube",
+        "duracion": "Vídeo completo",
+        "url": "https://www.youtube.com/watch?v=b-c9DPoqn-A"
+      },
+      {
+        "etiqueta": "⚡ Vídeo corto 2 minutos",
+        "titulo": "LIMPIAR AIREADOR DEL GRIFO",
+        "canal": "Iñaki Dieguez",
+        "duracion": "~2 min",
+        "url": "https://www.youtube.com/watch?v=kUEMfxnR82E"
+      },
+      {
+        "etiqueta": "📖 Cómo uniformiza el chorro",
+        "titulo": "Limpiar el aireador del grifo",
+        "canal": "Grifería Clever",
+        "duracion": "Artículo",
+        "url": "https://ideasyconsejos.griferiaclever.com/sabes-como-limpiar-el-aireador-del-grifo-te-lo-contamos/"
+      }
     ]
   },
   {
-    id: "007",
-    estancia: "Cocina",
-    nombre: "El grifo hace ruido o las tuberías vibran",
-    sintomas: "Silbido al abrir el grifo, vibración continua o golpe seco al cerrar. Cada ruido tiene una causa distinta.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "🔨 Golpe de ariete explicado", titulo: "Golpe de Ariete: qué es y cómo proteger tu sistema", canal: "YouTube", duracion: "Vídeo completo", url: "https://www.youtube.com/watch?v=fh-TDnA1FUw" },
-      { etiqueta: "📖 Ruido y vibración en tuberías", titulo: "Golpe de ariete en tuberías: ruido y vibración", canal: "STH Expert", duracion: "Artículo 2025", url: "https://sthexpert.standardhidraulica.com/golpe-ariete-tuberias/" },
-      { etiqueta: "🔧 Si es silbido local: aireador", titulo: "Cómo limpiar el aireador de los grifos", canal: "YouTube", duracion: "Vídeo completo", url: "https://www.youtube.com/watch?v=b-c9DPoqn-A" },
+    "id": "007",
+    "estancia": "Cocina",
+    "nombre": "El grifo hace ruido o las tuberías vibran",
+    "sintomas": "Silbido al abrir el grifo, vibración continua o golpe seco al cerrar. Cada ruido tiene una causa distinta.",
+    "nivel": "Diagnóstico",
+    "videos": [
+      {
+        "etiqueta": "🔨 Golpe de ariete explicado",
+        "titulo": "Golpe de Ariete: qué es y cómo proteger tu sistema",
+        "canal": "YouTube",
+        "duracion": "Vídeo completo",
+        "url": "https://www.youtube.com/watch?v=fh-TDnA1FUw"
+      },
+      {
+        "etiqueta": "📖 Ruido y vibración en tuberías",
+        "titulo": "Golpe de ariete en tuberías: ruido y vibración",
+        "canal": "STH Expert",
+        "duracion": "Artículo 2025",
+        "url": "https://sthexpert.standardhidraulica.com/golpe-ariete-tuberias/"
+      },
+      {
+        "etiqueta": "🔧 Si es silbido local: aireador",
+        "titulo": "Cómo limpiar el aireador de los grifos",
+        "canal": "YouTube",
+        "duracion": "Vídeo completo",
+        "url": "https://www.youtube.com/watch?v=b-c9DPoqn-A"
+      }
     ]
   },
   {
-    id: "008",
-    estancia: "Cocina",
-    nombre: "El grifo pierde agua por la base",
-    sintomas: "Aparece agua alrededor de la base del grifo. Puede nacer en la junta inferior, en el caño o en el cartucho. Seca todo primero y localiza el primer punto húmedo.",
-    nivel: "Fácil/medio",
-    videos: [
-      { etiqueta: "💧 Reparar y mantener el grifo", titulo: "Cómo reparar y mantener el grifo del fregadero", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-reparar-y-mantener-el-grifo-del-fregadero.html" },
-      { etiqueta: "🔧 Reparación general del grifo", titulo: "¿Cómo reparar un grifo?", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-reparar-un-grifo.html" },
+    "id": "008",
+    "estancia": "Cocina",
+    "nombre": "El grifo pierde agua por la base",
+    "sintomas": "Aparece agua alrededor de la base del grifo. Puede nacer en la junta inferior, en el caño o en el cartucho. Seca todo primero y localiza el primer punto húmedo.",
+    "nivel": "Fácil/medio",
+    "videos": [
+      {
+        "etiqueta": "💧 Reparar y mantener el grifo",
+        "titulo": "Cómo reparar y mantener el grifo del fregadero",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-reparar-y-mantener-el-grifo-del-fregadero.html"
+      },
+      {
+        "etiqueta": "🔧 Reparación general del grifo",
+        "titulo": "¿Cómo reparar un grifo?",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-reparar-un-grifo.html"
+      }
     ]
   },
   {
-    id: "009",
-    estancia: "Cocina",
-    nombre: "El grifo se mueve o está flojo",
-    sintomas: "El grifo se mueve sobre el fregadero al usarlo. Suele ser la tuerca de fijación inferior que se ha aflojado con el uso.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🔧 Guía completa de mantenimiento", titulo: "Cómo reparar y mantener el grifo del fregadero", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-reparar-y-mantener-el-grifo-del-fregadero.html" },
-      { etiqueta: "🎥 Ver montaje y fijación en vídeo", titulo: "Cómo instalar un grifo de cocina", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.youtube.com/watch?v=eyOeppUQPjI" },
+    "id": "009",
+    "estancia": "Cocina",
+    "nombre": "El grifo se mueve o está flojo",
+    "sintomas": "El grifo se mueve sobre el fregadero al usarlo. Suele ser la tuerca de fijación inferior que se ha aflojado con el uso.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "🔧 Guía completa de mantenimiento",
+        "titulo": "Cómo reparar y mantener el grifo del fregadero",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-reparar-y-mantener-el-grifo-del-fregadero.html"
+      },
+      {
+        "etiqueta": "🎥 Ver montaje y fijación en vídeo",
+        "titulo": "Cómo instalar un grifo de cocina",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.youtube.com/watch?v=eyOeppUQPjI"
+      }
     ]
   },
   {
-    id: "010",
-    estancia: "Cocina",
-    nombre: "Hay que sustituir el grifo de cocina",
-    sintomas: "El grifo tiene varias averías, el cuerpo está fisurado o ya no compensa repararlo. Cambio completo asequible si las llaves de corte funcionan.",
-    nivel: "Fácil/medio",
-    videos: [
-      { etiqueta: "🎥 Vídeo instalación completa", titulo: "Cómo instalar un grifo de cocina", canal: "Leroy Merlin España · 2024", duracion: "Ver enlace", url: "https://www.youtube.com/watch?v=eyOeppUQPjI" },
-      { etiqueta: "📖 Paso a paso escrito", titulo: "Cómo sustituir el grifo de la cocina", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-sustituir-el-grifo-de-cocina.html" },
-      { etiqueta: "📖 Guía complementaria", titulo: "Cómo instalar un grifo de cocina", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-un-grifo-de-cocina.html" },
+    "id": "010",
+    "estancia": "Cocina",
+    "nombre": "Hay que sustituir el grifo de cocina",
+    "sintomas": "El grifo tiene varias averías, el cuerpo está fisurado o ya no compensa repararlo. Cambio completo asequible si las llaves de corte funcionan.",
+    "nivel": "Fácil/medio",
+    "videos": [
+      {
+        "etiqueta": "🎥 Vídeo instalación completa",
+        "titulo": "Cómo instalar un grifo de cocina",
+        "canal": "Leroy Merlin España · 2024",
+        "duracion": "Ver enlace",
+        "url": "https://www.youtube.com/watch?v=eyOeppUQPjI"
+      },
+      {
+        "etiqueta": "📖 Paso a paso escrito",
+        "titulo": "Cómo sustituir el grifo de la cocina",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-sustituir-el-grifo-de-cocina.html"
+      },
+      {
+        "etiqueta": "📖 Guía complementaria",
+        "titulo": "Cómo instalar un grifo de cocina",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-un-grifo-de-cocina.html"
+      }
     ]
   },
   {
-    id: "011",
-    estancia: "Cocina",
-    nombre: "Pierde agua un latiguillo del fregadero",
-    sintomas: "Gotea bajo el fregadero desde uno de los tubos flexibles que conectan las llaves con el grifo. Puede ser la junta o el propio latiguillo.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "💧 Cambiar juntas de latiguillos", titulo: "Cómo cambiar las juntas de los latiguillos", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-cambiar-las-tomas-de-agua-de-un-bano.html" },
-      { etiqueta: "🔧 Desconectar latiguillos correctamente", titulo: "Cómo sustituir el grifo de la cocina", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-sustituir-el-grifo-de-cocina.html" },
+    "id": "011",
+    "estancia": "Cocina",
+    "nombre": "Pierde agua un latiguillo del fregadero",
+    "sintomas": "Gotea bajo el fregadero desde uno de los tubos flexibles que conectan las llaves con el grifo. Puede ser la junta o el propio latiguillo.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "💧 Cambiar juntas de latiguillos",
+        "titulo": "Cómo cambiar las juntas de los latiguillos",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-cambiar-las-tomas-de-agua-de-un-bano.html"
+      },
+      {
+        "etiqueta": "🔧 Desconectar latiguillos correctamente",
+        "titulo": "Cómo sustituir el grifo de la cocina",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-sustituir-el-grifo-de-cocina.html"
+      }
     ]
   },
   {
-    id: "012",
-    estancia: "Cocina",
-    nombre: "La llave de escuadra pierde agua",
-    sintomas: "La llave de corte situada bajo el fregadero gotea. Puede ser la junta del latiguillo, el mecanismo de la llave o la rosca de pared.",
-    nivel: "Medio",
-    videos: [
-      { etiqueta: "🎥 Cambiar llave de paso o escuadra", titulo: "Cómo cambiar una llave de paso o escuadra", canal: "dondeideas", duracion: "Ver enlace", url: "https://www.youtube.com/watch?v=nV4zUnO1GN0" },
-      { etiqueta: "🎥 Sustituir sin pérdidas", titulo: "Sustituir llave de escuadra sin pérdidas", canal: "El taller de Brito", duracion: "Ver enlace", url: "https://www.youtube.com/watch?v=HMK_k5oiRrU" },
-      { etiqueta: "📖 Guía escrita", titulo: "Cómo cambiar las tomas de agua", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-cambiar-las-tomas-de-agua-de-un-bano.html" },
+    "id": "012",
+    "estancia": "Cocina",
+    "nombre": "La llave de escuadra pierde agua",
+    "sintomas": "La llave de corte situada bajo el fregadero gotea. Puede ser la junta del latiguillo, el mecanismo de la llave o la rosca de pared.",
+    "nivel": "Medio",
+    "videos": [
+      {
+        "etiqueta": "🎥 Cambiar llave de paso o escuadra",
+        "titulo": "Cómo cambiar una llave de paso o escuadra",
+        "canal": "dondeideas",
+        "duracion": "Ver enlace",
+        "url": "https://www.youtube.com/watch?v=nV4zUnO1GN0"
+      },
+      {
+        "etiqueta": "🎥 Sustituir sin pérdidas",
+        "titulo": "Sustituir llave de escuadra sin pérdidas",
+        "canal": "El taller de Brito",
+        "duracion": "Ver enlace",
+        "url": "https://www.youtube.com/watch?v=HMK_k5oiRrU"
+      },
+      {
+        "etiqueta": "📖 Guía escrita",
+        "titulo": "Cómo cambiar las tomas de agua",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-cambiar-las-tomas-de-agua-de-un-bano.html"
+      }
     ]
   },
   {
-    id: "013",
-    estancia: "Cocina",
-    nombre: "La llave de escuadra no cierra",
-    sintomas: "La llave parece cerrada pero el agua sigue saliendo. Prueba: cierra la llave y abre el grifo. Si sigue fluyendo, la llave no corta correctamente.",
-    nivel: "Medio",
-    videos: [
-      { etiqueta: "📖 Prueba y mantenimiento de llaves", titulo: "Cada cuánto comprobar las llaves de paso", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/consejos/cada-cuanto-tiempo-se-deben-de-comprobar-las-llaves-de-paso.html" },
-      { etiqueta: "🎥 Si hay que sustituirla", titulo: "Cómo cambiar una llave de paso o escuadra", canal: "dondeideas", duracion: "Ver enlace", url: "https://www.youtube.com/watch?v=nV4zUnO1GN0" },
+    "id": "013",
+    "estancia": "Cocina",
+    "nombre": "La llave de escuadra no cierra",
+    "sintomas": "La llave parece cerrada pero el agua sigue saliendo. Prueba: cierra la llave y abre el grifo. Si sigue fluyendo, la llave no corta correctamente.",
+    "nivel": "Medio",
+    "videos": [
+      {
+        "etiqueta": "📖 Prueba y mantenimiento de llaves",
+        "titulo": "Cada cuánto comprobar las llaves de paso",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/consejos/cada-cuanto-tiempo-se-deben-de-comprobar-las-llaves-de-paso.html"
+      },
+      {
+        "etiqueta": "🎥 Si hay que sustituirla",
+        "titulo": "Cómo cambiar una llave de paso o escuadra",
+        "canal": "dondeideas",
+        "duracion": "Ver enlace",
+        "url": "https://www.youtube.com/watch?v=nV4zUnO1GN0"
+      }
     ]
   },
   {
-    id: "014",
-    estancia: "Cocina",
-    nombre: "El sifón pierde agua",
-    sintomas: "Aparece agua bajo el fregadero al vaciar agua. Suele ser una junta desplazada, mal orientada o una tuerca floja en el sifón.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "📖 Juntas y desagüe completo", titulo: "Cómo instalar el desagüe de un fregadero", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-el-desague-de-un-fregadero.html" },
-      { etiqueta: "🔧 Desmontaje del sifón", titulo: "Cómo limpiar un sifón y desatascar el fregadero", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html" },
+    "id": "014",
+    "estancia": "Cocina",
+    "nombre": "El sifón pierde agua",
+    "sintomas": "Aparece agua bajo el fregadero al vaciar agua. Suele ser una junta desplazada, mal orientada o una tuerca floja en el sifón.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "📖 Juntas y desagüe completo",
+        "titulo": "Cómo instalar el desagüe de un fregadero",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-el-desague-de-un-fregadero.html"
+      },
+      {
+        "etiqueta": "🔧 Desmontaje del sifón",
+        "titulo": "Cómo limpiar un sifón y desatascar el fregadero",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html"
+      }
     ]
   },
   {
-    id: "015",
-    estancia: "Cocina",
-    nombre: "El desagüe pierde agua por una unión",
-    sintomas: "Gotea agua en una unión del desagüe entre la válvula y el sifón o la salida a pared. Suele ser junta mal colocada o tubos desalineados.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "📖 Instalar desagüe y uniones", titulo: "Cómo instalar el desagüe de un fregadero", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-el-desague-de-un-fregadero.html" },
-      { etiqueta: "🔧 Desmontaje y remontaje", titulo: "Cómo limpiar un sifón y desatascar el fregadero", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html" },
+    "id": "015",
+    "estancia": "Cocina",
+    "nombre": "El desagüe pierde agua por una unión",
+    "sintomas": "Gotea agua en una unión del desagüe entre la válvula y el sifón o la salida a pared. Suele ser junta mal colocada o tubos desalineados.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "📖 Instalar desagüe y uniones",
+        "titulo": "Cómo instalar el desagüe de un fregadero",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-el-desague-de-un-fregadero.html"
+      },
+      {
+        "etiqueta": "🔧 Desmontaje y remontaje",
+        "titulo": "Cómo limpiar un sifón y desatascar el fregadero",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html"
+      }
     ]
   },
   {
-    id: "016",
-    estancia: "Cocina",
-    nombre: "Aparece agua dentro del mueble del fregadero",
-    sintomas: "Encuentras agua en el mueble bajo el fregadero sin saber de dónde viene. Puede ser alimentación, desagüe, sellado o lavavajillas. Hay que probar cada origen por separado.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🔧 Revisar grifo y conexiones", titulo: "Cómo reparar y mantener el grifo del fregadero", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-reparar-y-mantener-el-grifo-del-fregadero.html" },
-      { etiqueta: "💧 Revisar desagüe y juntas", titulo: "Cómo instalar el desagüe de un fregadero", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-el-desague-de-un-fregadero.html" },
+    "id": "016",
+    "estancia": "Cocina",
+    "nombre": "Aparece agua dentro del mueble del fregadero",
+    "sintomas": "Encuentras agua en el mueble bajo el fregadero sin saber de dónde viene. Puede ser alimentación, desagüe, sellado o lavavajillas. Hay que probar cada origen por separado.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "🔧 Revisar grifo y conexiones",
+        "titulo": "Cómo reparar y mantener el grifo del fregadero",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-reparar-y-mantener-el-grifo-del-fregadero.html"
+      },
+      {
+        "etiqueta": "💧 Revisar desagüe y juntas",
+        "titulo": "Cómo instalar el desagüe de un fregadero",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-el-desague-de-un-fregadero.html"
+      }
     ]
   },
   {
-    id: "017",
-    estancia: "Cocina",
-    nombre: "Se oyen gorgoteos en el fregadero",
-    sintomas: "El fregadero hace ruido de borboteo al vaciar agua. Puede ser un atasco parcial, aire desplazado por otro aparato o un problema de ventilación del desagüe.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "🧽 Atasco parcial · limpiar sifón", titulo: "Cómo limpiar un sifón y desatascar el fregadero", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html" },
-      { etiqueta: "🔧 Métodos de desatasco", titulo: "Cómo desatascar las tuberías", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-desatascar-las-tuberias.html" },
+    "id": "017",
+    "estancia": "Cocina",
+    "nombre": "Se oyen gorgoteos en el fregadero",
+    "sintomas": "El fregadero hace ruido de borboteo al vaciar agua. Puede ser un atasco parcial, aire desplazado por otro aparato o un problema de ventilación del desagüe.",
+    "nivel": "Diagnóstico",
+    "videos": [
+      {
+        "etiqueta": "🧽 Atasco parcial · limpiar sifón",
+        "titulo": "Cómo limpiar un sifón y desatascar el fregadero",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html"
+      },
+      {
+        "etiqueta": "🔧 Métodos de desatasco",
+        "titulo": "Cómo desatascar las tuberías",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-desatascar-las-tuberias.html"
+      }
     ]
   },
   {
-    id: "018",
-    estancia: "Cocina",
-    nombre: "El agua vuelve por el fregadero",
-    sintomas: "El agua sube por el desagüe en vez de bajar. Puede ser un atasco después del sifón, el lavavajillas o un bloqueo en tramo común. Deja de añadir agua inmediatamente.",
-    nivel: "Atención",
-    videos: [
-      { etiqueta: "🪠 Sifón y atasco posterior", titulo: "Cómo limpiar un sifón y desatascar el fregadero", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html" },
-      { etiqueta: "🔧 Métodos mecánicos progresivos", titulo: "Cómo desatascar las tuberías", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-desatascar-las-tuberias.html" },
+    "id": "018",
+    "estancia": "Cocina",
+    "nombre": "El agua vuelve por el fregadero",
+    "sintomas": "El agua sube por el desagüe en vez de bajar. Puede ser un atasco después del sifón, el lavavajillas o un bloqueo en tramo común. Deja de añadir agua inmediatamente.",
+    "nivel": "Atención",
+    "videos": [
+      {
+        "etiqueta": "🪠 Sifón y atasco posterior",
+        "titulo": "Cómo limpiar un sifón y desatascar el fregadero",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html"
+      },
+      {
+        "etiqueta": "🔧 Métodos mecánicos progresivos",
+        "titulo": "Cómo desatascar las tuberías",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-desatascar-las-tuberias.html"
+      }
     ]
   },
   {
-    id: "019",
-    estancia: "Cocina",
-    nombre: "Entra agua entre el fregadero y la encimera",
-    sintomas: "El agua se filtra por el perímetro del fregadero hacia la encimera. Suele ser la silicona deteriorada, despegada o aplicada sobre superficie sucia.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "✂️ Cambio de silicona paso a paso", titulo: "Cambio de silicona en fregadero paso a paso", canal: "Comunidad Leroy Merlin", duracion: "Ver enlace", url: "https://comunidad.leroymerlin.es/app/736/channel/proyectos-2209/details/cambio-de-silicona-en-fregadero-paso-a-p-42570002" },
-      { etiqueta: "📖 Instalación y sellado", titulo: "Cómo instalar un fregadero", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-un-fregadero.html" },
-      { etiqueta: "🎥 Vídeo colocación completa", titulo: "Cómo instalar un fregadero encastrado", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.youtube.com/watch?v=d8OEL-Th4oM" },
+    "id": "019",
+    "estancia": "Cocina",
+    "nombre": "Entra agua entre el fregadero y la encimera",
+    "sintomas": "El agua se filtra por el perímetro del fregadero hacia la encimera. Suele ser la silicona deteriorada, despegada o aplicada sobre superficie sucia.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "✂️ Cambio de silicona paso a paso",
+        "titulo": "Cambio de silicona en fregadero paso a paso",
+        "canal": "Comunidad Leroy Merlin",
+        "duracion": "Ver enlace",
+        "url": "https://comunidad.leroymerlin.es/app/736/channel/proyectos-2209/details/cambio-de-silicona-en-fregadero-paso-a-p-42570002"
+      },
+      {
+        "etiqueta": "📖 Instalación y sellado",
+        "titulo": "Cómo instalar un fregadero",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-un-fregadero.html"
+      },
+      {
+        "etiqueta": "🎥 Vídeo colocación completa",
+        "titulo": "Cómo instalar un fregadero encastrado",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.youtube.com/watch?v=d8OEL-Th4oM"
+      }
     ]
   },
   {
-    id: "020",
-    estancia: "Cocina",
-    nombre: "El fregadero de acero se mueve o está despegado",
-    sintomas: "El fregadero se mueve al usarlo o tiene un borde levantado. Hay que revisar los clips de fijación por debajo antes de añadir silicona.",
-    nivel: "Fácil/medio",
-    videos: [
-      { etiqueta: "📖 Instalación y fijación", titulo: "Cómo instalar un fregadero", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-un-fregadero.html" },
-      { etiqueta: "🎥 Encastre y clips en vídeo", titulo: "Cómo instalar un fregadero encastrado", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.youtube.com/watch?v=d8OEL-Th4oM" },
+    "id": "020",
+    "estancia": "Cocina",
+    "nombre": "El fregadero de acero se mueve o está despegado",
+    "sintomas": "El fregadero se mueve al usarlo o tiene un borde levantado. Hay que revisar los clips de fijación por debajo antes de añadir silicona.",
+    "nivel": "Fácil/medio",
+    "videos": [
+      {
+        "etiqueta": "📖 Instalación y fijación",
+        "titulo": "Cómo instalar un fregadero",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-un-fregadero.html"
+      },
+      {
+        "etiqueta": "🎥 Encastre y clips en vídeo",
+        "titulo": "Cómo instalar un fregadero encastrado",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.youtube.com/watch?v=d8OEL-Th4oM"
+      }
     ]
   },
   {
-    id: "021",
-    estancia: "Cocina",
-    nombre: "El mueble bajo fregadero está hinchado por humedad",
-    sintomas: "El tablero del mueble bajo el fregadero está abombado o blando. Primero hay que localizar y reparar la fuga; después secar y valorar si el tablero se puede recuperar o hay que sustituirlo.",
-    nivel: "Fácil/medio",
-    videos: [
-      { etiqueta: "📖 Sellado y prevención de humedad", titulo: "Cómo instalar un fregadero", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-un-fregadero.html" },
+    "id": "021",
+    "estancia": "Cocina",
+    "nombre": "El mueble bajo fregadero está hinchado por humedad",
+    "sintomas": "El tablero del mueble bajo el fregadero está abombado o blando. Primero hay que localizar y reparar la fuga; después secar y valorar si el tablero se puede recuperar o hay que sustituirlo.",
+    "nivel": "Fácil/medio",
+    "videos": [
+      {
+        "etiqueta": "📖 Sellado y prevención de humedad",
+        "titulo": "Cómo instalar un fregadero",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-un-fregadero.html"
+      }
     ]
   },
   {
-    id: "022",
-    estancia: "Cocina",
-    nombre: "La campana extractora no enciende",
-    sintomas: "La campana no da ninguna señal al encenderla: ni luz ni motor. Empieza comprobando la toma de corriente con otro aparato antes de tocar nada de la campana.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "🔌 Ayuda oficial de fabricante", titulo: "Ayuda y asistencia para campanas extractoras", canal: "Bosch Home España", duracion: "Ver enlace", url: "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas" },
+    "id": "022",
+    "estancia": "Cocina",
+    "nombre": "La campana extractora no enciende",
+    "sintomas": "La campana no da ninguna señal al encenderla: ni luz ni motor. Empieza comprobando la toma de corriente con otro aparato antes de tocar nada de la campana.",
+    "nivel": "Diagnóstico",
+    "videos": [
+      {
+        "etiqueta": "🔌 Ayuda oficial de fabricante",
+        "titulo": "Ayuda y asistencia para campanas extractoras",
+        "canal": "Bosch Home España",
+        "duracion": "Ver enlace",
+        "url": "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas"
+      }
     ]
   },
   {
-    id: "023",
-    estancia: "Cocina",
-    nombre: "La campana enciende pero no aspira",
-    sintomas: "La campana se enciende y el motor suena, pero aspira poco o nada. La primera causa son los filtros saturados de grasa o el filtro de carbón en modelos de recirculación.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🧽 Limpieza y mantenimiento de filtros", titulo: "Ayuda y asistencia para campanas extractoras", canal: "Bosch Home España", duracion: "Ver enlace", url: "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas" },
+    "id": "023",
+    "estancia": "Cocina",
+    "nombre": "La campana enciende pero no aspira",
+    "sintomas": "La campana se enciende y el motor suena, pero aspira poco o nada. La primera causa son los filtros saturados de grasa o el filtro de carbón en modelos de recirculación.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "🧽 Limpieza y mantenimiento de filtros",
+        "titulo": "Ayuda y asistencia para campanas extractoras",
+        "canal": "Bosch Home España",
+        "duracion": "Ver enlace",
+        "url": "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas"
+      }
     ]
   },
   {
-    id: "024",
-    estancia: "Cocina",
-    nombre: "La campana hace demasiado ruido",
-    sintomas: "La campana hace más ruido de lo normal: vibración, traqueteo, silbido o roce. La mayoría de las veces es un filtro mal colocado o una fijación floja.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "🔊 Diagnóstico y mantenimiento campanas", titulo: "Ayuda y asistencia para campanas extractoras", canal: "Bosch Home España", duracion: "Ver enlace", url: "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas" },
+    "id": "024",
+    "estancia": "Cocina",
+    "nombre": "La campana hace demasiado ruido",
+    "sintomas": "La campana hace más ruido de lo normal: vibración, traqueteo, silbido o roce. La mayoría de las veces es un filtro mal colocado o una fijación floja.",
+    "nivel": "Diagnóstico",
+    "videos": [
+      {
+        "etiqueta": "🔊 Diagnóstico y mantenimiento campanas",
+        "titulo": "Ayuda y asistencia para campanas extractoras",
+        "canal": "Bosch Home España",
+        "duracion": "Ver enlace",
+        "url": "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas"
+      }
     ]
   },
   {
-    id: "025",
-    estancia: "Cocina",
-    nombre: "La campana gotea grasa",
-    sintomas: "Aparecen gotas pegajosas amarillas o marrones cayendo de la campana. Suele ser un filtro metálico saturado que no puede retener más grasa.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🧽 Limpieza y mantenimiento campanas", titulo: "Ayuda y asistencia para campanas extractoras", canal: "Bosch Home España", duracion: "Ver enlace", url: "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas" },
+    "id": "025",
+    "estancia": "Cocina",
+    "nombre": "La campana gotea grasa",
+    "sintomas": "Aparecen gotas pegajosas amarillas o marrones cayendo de la campana. Suele ser un filtro metálico saturado que no puede retener más grasa.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "🧽 Limpieza y mantenimiento campanas",
+        "titulo": "Ayuda y asistencia para campanas extractoras",
+        "canal": "Bosch Home España",
+        "duracion": "Ver enlace",
+        "url": "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas"
+      }
     ]
   },
   {
-    id: "026",
-    estancia: "Cocina",
-    nombre: "La luz de la campana no funciona",
-    sintomas: "El motor de la campana funciona pero la iluminación no. Puede ser una bombilla agotada, un módulo LED o un fallo en el mando. Identifica el modelo antes de comprar nada.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "💡 Averías bombillas y campanas", titulo: "Averías comunes de campanas extractoras", canal: "Teka España", duracion: "Ver enlace", url: "https://www.teka.com/es-es/inspiracion/consejos-y-mantenimiento/uso/averias-campana-extractora/" },
-      { etiqueta: "🔧 Soporte oficial por modelo", titulo: "Ayuda y asistencia para campanas", canal: "Bosch Home España", duracion: "Ver enlace", url: "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas" },
+    "id": "026",
+    "estancia": "Cocina",
+    "nombre": "La luz de la campana no funciona",
+    "sintomas": "El motor de la campana funciona pero la iluminación no. Puede ser una bombilla agotada, un módulo LED o un fallo en el mando. Identifica el modelo antes de comprar nada.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "💡 Averías bombillas y campanas",
+        "titulo": "Averías comunes de campanas extractoras",
+        "canal": "Teka España",
+        "duracion": "Ver enlace",
+        "url": "https://www.teka.com/es-es/inspiracion/consejos-y-mantenimiento/uso/averias-campana-extractora/"
+      },
+      {
+        "etiqueta": "🔧 Soporte oficial por modelo",
+        "titulo": "Ayuda y asistencia para campanas",
+        "canal": "Bosch Home España",
+        "duracion": "Ver enlace",
+        "url": "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas"
+      }
     ]
   },
   {
-    id: "027",
-    estancia: "Cocina",
-    nombre: "La campana vibra",
-    sintomas: "La campana produce una vibración molesta al funcionar. Puede ser un filtro mal colocado, una fijación floja, el conducto o la turbina. Identifica cuándo empeora antes de desmontar nada.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "❓ Preguntas frecuentes vibración y ruido", titulo: "Preguntas frecuentes de campanas extractoras", canal: "Teka Soporte España", duracion: "Ver enlace", url: "https://www.teka.com/es-es/faq_cat/campanas-faq/" },
-      { etiqueta: "⚙️ Ruidos y vibraciones anómalas", titulo: "Por qué una campana deja de funcionar correctamente", canal: "Teka España", duracion: "Ver enlace", url: "https://www.teka.com/es-es/inspiracion/por-que-mi-campana-extractora-no-funciona/" },
+    "id": "027",
+    "estancia": "Cocina",
+    "nombre": "La campana vibra",
+    "sintomas": "La campana produce una vibración molesta al funcionar. Puede ser un filtro mal colocado, una fijación floja, el conducto o la turbina. Identifica cuándo empeora antes de desmontar nada.",
+    "nivel": "Diagnóstico",
+    "videos": [
+      {
+        "etiqueta": "❓ Preguntas frecuentes vibración y ruido",
+        "titulo": "Preguntas frecuentes de campanas extractoras",
+        "canal": "Teka Soporte España",
+        "duracion": "Ver enlace",
+        "url": "https://www.teka.com/es-es/faq_cat/campanas-faq/"
+      },
+      {
+        "etiqueta": "⚙️ Ruidos y vibraciones anómalas",
+        "titulo": "Por qué una campana deja de funcionar correctamente",
+        "canal": "Teka España",
+        "duracion": "Ver enlace",
+        "url": "https://www.teka.com/es-es/inspiracion/por-que-mi-campana-extractora-no-funciona/"
+      }
     ]
   },
   {
-    id: "028",
-    estancia: "Cocina",
-    nombre: "Una puerta de armario está caída o desalineada",
-    sintomas: "La puerta de un mueble de cocina no cierra bien, roza con la vecina o está más baja de un lado. Las bisagras modernas permiten ajuste en tres direcciones sin cambiar ninguna pieza.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🔧 Ajuste tridimensional bisagras", titulo: "Montaje y ajuste de bisagras", canal: "Blum España", duracion: "Ver enlace", url: "https://www.blum.com/es/es/services/assembly-adjustment/" },
-      { etiqueta: "📖 CLIP top ajuste 3D", titulo: "CLIP top: montaje y ajuste tridimensional", canal: "Blum España", duracion: "Ver enlace", url: "https://www.blum.com/es/es/products/hingesystems/clip-top/assembly/" },
-      { etiqueta: "🏠 Ejemplo sistema cocina", titulo: "METOD: regulación de bisagras", canal: "IKEA España", duracion: "Ver enlace", url: "https://www.ikea.com/es/es/p/metod-armario-para-fregadero-con-puerta-s29586227/" },
+    "id": "028",
+    "estancia": "Cocina",
+    "nombre": "Una puerta de armario está caída o desalineada",
+    "sintomas": "La puerta de un mueble de cocina no cierra bien, roza con la vecina o está más baja de un lado. Las bisagras modernas permiten ajuste en tres direcciones sin cambiar ninguna pieza.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "🔧 Ajuste tridimensional bisagras",
+        "titulo": "Montaje y ajuste de bisagras",
+        "canal": "Blum España",
+        "duracion": "Ver enlace",
+        "url": "https://www.blum.com/es/es/services/assembly-adjustment/"
+      },
+      {
+        "etiqueta": "📖 CLIP top ajuste 3D",
+        "titulo": "CLIP top: montaje y ajuste tridimensional",
+        "canal": "Blum España",
+        "duracion": "Ver enlace",
+        "url": "https://www.blum.com/es/es/products/hingesystems/clip-top/assembly/"
+      },
+      {
+        "etiqueta": "🏠 Ejemplo sistema cocina",
+        "titulo": "METOD: regulación de bisagras",
+        "canal": "IKEA España",
+        "duracion": "Ver enlace",
+        "url": "https://www.ikea.com/es/es/p/metod-armario-para-fregadero-con-puerta-s29586227/"
+      }
     ]
   },
   {
-    id: "029",
-    estancia: "Cocina",
-    nombre: "Una bisagra de cocina está floja o arrancada",
-    sintomas: "La bisagra del mueble se mueve o ha arrancado del tablero. Si el tornillo simplemente se aflojó, se reaprecia. Si gira en vacío, el agujero del tablero está dañado.",
-    nivel: "Fácil/medio",
-    videos: [
-      { etiqueta: "🔩 Sistemas de bisagras y montaje", titulo: "Sistemas de bisagras y ayudas de montaje", canal: "Blum España", duracion: "Ver enlace", url: "https://www.blum.com/es/es/products/hingesystems/overview/" },
-      { etiqueta: "🔧 Referencia alternativa", titulo: "Bisagras para muebles", canal: "Hettich España", duracion: "Ver enlace", url: "https://www.hettich.com/es-es/productos/bisagras" },
+    "id": "029",
+    "estancia": "Cocina",
+    "nombre": "Una bisagra de cocina está floja o arrancada",
+    "sintomas": "La bisagra del mueble se mueve o ha arrancado del tablero. Si el tornillo simplemente se aflojó, se reaprecia. Si gira en vacío, el agujero del tablero está dañado.",
+    "nivel": "Fácil/medio",
+    "videos": [
+      {
+        "etiqueta": "🔩 Sistemas de bisagras y montaje",
+        "titulo": "Sistemas de bisagras y ayudas de montaje",
+        "canal": "Blum España",
+        "duracion": "Ver enlace",
+        "url": "https://www.blum.com/es/es/products/hingesystems/overview/"
+      },
+      {
+        "etiqueta": "🔧 Referencia alternativa",
+        "titulo": "Bisagras para muebles",
+        "canal": "Hettich España",
+        "duracion": "Ver enlace",
+        "url": "https://www.hettich.com/es-es/productos/bisagras"
+      }
     ]
   },
   {
-    id: "030",
-    estancia: "Cocina",
-    nombre: "Un cajón no abre o cierra correctamente",
-    sintomas: "El cajón se atasca, no entra del todo o cuesta moverlo. Vacíalo primero: un objeto detrás o el exceso de peso son las causas más frecuentes antes de revisar las guías.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🗄 Montaje y ajuste herrajes", titulo: "Montaje y ajuste de herrajes", canal: "Blum España", duracion: "Ver enlace", url: "https://www.blum.com/es/es/services/assembly-adjustment/" },
-      { etiqueta: "📖 Cajón con cierre suave", titulo: "METOD/MAXIMERA cajón con cierre suave", canal: "IKEA España", duracion: "Ver enlace", url: "https://www.ikea.com/es/es/p/metod-maximera-armario-bajo-con-cajon-puerta-s99586059/" },
+    "id": "030",
+    "estancia": "Cocina",
+    "nombre": "Un cajón no abre o cierra correctamente",
+    "sintomas": "El cajón se atasca, no entra del todo o cuesta moverlo. Vacíalo primero: un objeto detrás o el exceso de peso son las causas más frecuentes antes de revisar las guías.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "🗄 Montaje y ajuste herrajes",
+        "titulo": "Montaje y ajuste de herrajes",
+        "canal": "Blum España",
+        "duracion": "Ver enlace",
+        "url": "https://www.blum.com/es/es/services/assembly-adjustment/"
+      },
+      {
+        "etiqueta": "📖 Cajón con cierre suave",
+        "titulo": "METOD/MAXIMERA cajón con cierre suave",
+        "canal": "IKEA España",
+        "duracion": "Ver enlace",
+        "url": "https://www.ikea.com/es/es/p/metod-maximera-armario-bajo-con-cajon-puerta-s99586059/"
+      }
     ]
   },
   {
-    id: "031",
-    estancia: "Cocina",
-    nombre: "Un cajón se sale de las guías",
-    sintomas: "El cajón llega demasiado lejos o se sale completamente. Vacíalo primero y compara los enganches de ambos lados: normalmente uno no está bloqueado correctamente.",
-    nivel: "Fácil/medio",
-    videos: [
-      { etiqueta: "🗄 Sistemas extraíbles · montaje", titulo: "Montaje y ajuste de sistemas extraíbles", canal: "Blum España", duracion: "Ver enlace", url: "https://www.blum.com/es/es/services/assembly-adjustment/" },
-      { etiqueta: "🔧 Identificar herrajes de cajón", titulo: "Sistemas de cajones y guías", canal: "Hettich España", duracion: "Ver enlace", url: "https://www.hettich.com/es-es/productos/sistemas-de-cajones" },
+    "id": "031",
+    "estancia": "Cocina",
+    "nombre": "Un cajón se sale de las guías",
+    "sintomas": "El cajón llega demasiado lejos o se sale completamente. Vacíalo primero y compara los enganches de ambos lados: normalmente uno no está bloqueado correctamente.",
+    "nivel": "Fácil/medio",
+    "videos": [
+      {
+        "etiqueta": "🗄 Sistemas extraíbles · montaje",
+        "titulo": "Montaje y ajuste de sistemas extraíbles",
+        "canal": "Blum España",
+        "duracion": "Ver enlace",
+        "url": "https://www.blum.com/es/es/services/assembly-adjustment/"
+      },
+      {
+        "etiqueta": "🔧 Identificar herrajes de cajón",
+        "titulo": "Sistemas de cajones y guías",
+        "canal": "Hettich España",
+        "duracion": "Ver enlace",
+        "url": "https://www.hettich.com/es-es/productos/sistemas-de-cajones"
+      }
     ]
   },
   {
-    id: "032",
-    estancia: "Cocina",
-    nombre: "La encimera se ha hinchado cerca del fregadero",
-    sintomas: "La encimera laminada está abombada o hinchada cerca del fregadero. Primero hay que detener la entrada de agua y luego valorar si el tablero sigue siendo estable o hay que sustituirlo.",
-    nivel: "Atención",
-    videos: [
-      { etiqueta: "🏠 Cuidados de encimeras de cocina", titulo: "Cuidados y mantenimiento de encimeras", canal: "IKEA España", duracion: "Ver enlace", url: "https://www.ikea.com/es/es/customer-service/product-support/kitchen/" },
-      { etiqueta: "💧 Sellado zonas húmedas", titulo: "Soluciones de sellado para cocina y baño", canal: "Soudal España", duracion: "Ver enlace", url: "https://www.soudal.es/pro/aplicaciones/sellado" },
+    "id": "032",
+    "estancia": "Cocina",
+    "nombre": "La encimera se ha hinchado cerca del fregadero",
+    "sintomas": "La encimera laminada está abombada o hinchada cerca del fregadero. Primero hay que detener la entrada de agua y luego valorar si el tablero sigue siendo estable o hay que sustituirlo.",
+    "nivel": "Atención",
+    "videos": [
+      {
+        "etiqueta": "🏠 Cuidados de encimeras de cocina",
+        "titulo": "Cuidados y mantenimiento de encimeras",
+        "canal": "IKEA España",
+        "duracion": "Ver enlace",
+        "url": "https://www.ikea.com/es/es/customer-service/product-support/kitchen/"
+      },
+      {
+        "etiqueta": "💧 Sellado zonas húmedas",
+        "titulo": "Soluciones de sellado para cocina y baño",
+        "canal": "Soudal España",
+        "duracion": "Ver enlace",
+        "url": "https://www.soudal.es/pro/aplicaciones/sellado"
+      }
     ]
   },
   {
-    id: "033",
-    estancia: "Cocina",
-    nombre: "La junta entre encimera y pared se ha abierto",
-    sintomas: "Hay un hueco visible entre la encimera y la pared o el azulejo. Hay que retirar toda la silicona vieja, limpiar bien y aplicar un cordón continuo nuevo sobre superficie seca.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "〰️ Sellado de juntas en zonas húmedas", titulo: "Sellado de juntas en zonas húmedas", canal: "Sika España", duracion: "Ver enlace", url: "https://esp.sika.com/es/construccion/sellado-pegado.html" },
-      { etiqueta: "🧴 Selladores domésticos", titulo: "Selladores para cocinas y baños", canal: "Ceys", duracion: "Ver enlace", url: "https://www.mundoceys.com/" },
+    "id": "033",
+    "estancia": "Cocina",
+    "nombre": "La junta entre encimera y pared se ha abierto",
+    "sintomas": "Hay un hueco visible entre la encimera y la pared o el azulejo. Hay que retirar toda la silicona vieja, limpiar bien y aplicar un cordón continuo nuevo sobre superficie seca.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "〰️ Sellado de juntas en zonas húmedas",
+        "titulo": "Sellado de juntas en zonas húmedas",
+        "canal": "Sika España",
+        "duracion": "Ver enlace",
+        "url": "https://esp.sika.com/es/construccion/sellado-pegado.html"
+      },
+      {
+        "etiqueta": "🧴 Selladores domésticos",
+        "titulo": "Selladores para cocinas y baños",
+        "canal": "Ceys",
+        "duracion": "Ver enlace",
+        "url": "https://www.mundoceys.com/"
+      }
     ]
   },
   {
-    id: "034",
-    estancia: "Cocina",
-    nombre: "Una baldosa está suelta",
-    sintomas: "Un azulejo se mueve o suena hueco al golpearlo. Si es una pieza aislada con el soporte seco y firme, puede retirarse y recolocarse. Varias piezas sueltas o humedad indican un problema mayor.",
-    nivel: "Fácil/medio",
-    videos: [
-      { etiqueta: "🪣 Adhesivos y soluciones cerámicas", titulo: "Guías y soluciones para colocación cerámica", canal: "Mapei España", duracion: "Ver enlace", url: "https://www.mapei.com/es/es/productos-y-soluciones" },
-      { etiqueta: "📖 Referencia sector cerámico", titulo: "Colocación y mantenimiento cerámico", canal: "Porcelanosa", duracion: "Ver enlace", url: "https://www.porcelanosa.com/" },
+    "id": "034",
+    "estancia": "Cocina",
+    "nombre": "Una baldosa está suelta",
+    "sintomas": "Un azulejo se mueve o suena hueco al golpearlo. Si es una pieza aislada con el soporte seco y firme, puede retirarse y recolocarse. Varias piezas sueltas o humedad indican un problema mayor.",
+    "nivel": "Fácil/medio",
+    "videos": [
+      {
+        "etiqueta": "🪣 Adhesivos y soluciones cerámicas",
+        "titulo": "Guías y soluciones para colocación cerámica",
+        "canal": "Mapei España",
+        "duracion": "Ver enlace",
+        "url": "https://www.mapei.com/es/es/productos-y-soluciones"
+      },
+      {
+        "etiqueta": "📖 Referencia sector cerámico",
+        "titulo": "Colocación y mantenimiento cerámico",
+        "canal": "Porcelanosa",
+        "duracion": "Ver enlace",
+        "url": "https://www.porcelanosa.com/"
+      }
     ]
   },
   {
-    id: "035",
-    estancia: "Cocina",
-    nombre: "Las juntas de los azulejos están deterioradas",
-    sintomas: "Las juntas entre azulejos están negras, con huecos o agrietadas. Primero limpia para distinguir suciedad de deterioro real: muchas juntas oscuras no necesitan reparación.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🧱 Rejuntados cerámicos", titulo: "Soluciones de rejuntado cerámico", canal: "Mapei España", duracion: "Ver enlace", url: "https://www.mapei.com/es/es/productos-y-soluciones/lineas-de-productos/materiales-para-ceramica" },
-      { etiqueta: "🔧 Morteros y reparación", titulo: "Morteros para juntas y colocación cerámica", canal: "Weber España", duracion: "Ver enlace", url: "https://www.es.weber/" },
+    "id": "035",
+    "estancia": "Cocina",
+    "nombre": "Las juntas de los azulejos están deterioradas",
+    "sintomas": "Las juntas entre azulejos están negras, con huecos o agrietadas. Primero limpia para distinguir suciedad de deterioro real: muchas juntas oscuras no necesitan reparación.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "🧱 Rejuntados cerámicos",
+        "titulo": "Soluciones de rejuntado cerámico",
+        "canal": "Mapei España",
+        "duracion": "Ver enlace",
+        "url": "https://www.mapei.com/es/es/productos-y-soluciones/lineas-de-productos/materiales-para-ceramica"
+      },
+      {
+        "etiqueta": "🔧 Morteros y reparación",
+        "titulo": "Morteros para juntas y colocación cerámica",
+        "canal": "Weber España",
+        "duracion": "Ver enlace",
+        "url": "https://www.es.weber/"
+      }
     ]
   },
   {
-    id: "036",
-    estancia: "Cocina",
-    nombre: "Salen pequeños insectos del desagüe",
-    sintomas: "Aparecen pequeñas mosquitas o moscas cerca del fregadero. Suelen reproducirse en el biofilm del desagüe. La solución es eliminar la materia orgánica, no solo matar los adultos.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🪰 Identificación y biofilm", titulo: "Drain Flies: identificación y control", canal: "University of Maryland Extension", duracion: "Ver enlace", url: "https://extension.umd.edu/resource/drain-flies" },
-      { etiqueta: "🩹 Prueba de cinta y limpieza", titulo: "Drain Fly Psychoda spp.", canal: "University of Florida IFAS", duracion: "Ver enlace", url: "https://ask.ifas.ufl.edu/publication/IN1226" },
-      { etiqueta: "🧽 Eliminar biofilm como solución", titulo: "Moth or Drain Flies", canal: "UC Integrated Pest Management", duracion: "Ver enlace", url: "https://ipm.ucanr.edu/home-and-landscape/moth-or-drain-flies/" },
+    "id": "036",
+    "estancia": "Cocina",
+    "nombre": "Salen pequeños insectos del desagüe",
+    "sintomas": "Aparecen pequeñas mosquitas o moscas cerca del fregadero. Suelen reproducirse en el biofilm del desagüe. La solución es eliminar la materia orgánica, no solo matar los adultos.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "🪰 Identificación y biofilm",
+        "titulo": "Drain Flies: identificación y control",
+        "canal": "University of Maryland Extension",
+        "duracion": "Ver enlace",
+        "url": "https://extension.umd.edu/resource/drain-flies"
+      },
+      {
+        "etiqueta": "🩹 Prueba de cinta y limpieza",
+        "titulo": "Drain Fly Psychoda spp.",
+        "canal": "University of Florida IFAS",
+        "duracion": "Ver enlace",
+        "url": "https://ask.ifas.ufl.edu/publication/IN1226"
+      },
+      {
+        "etiqueta": "🧽 Eliminar biofilm como solución",
+        "titulo": "Moth or Drain Flies",
+        "canal": "UC Integrated Pest Management",
+        "duracion": "Ver enlace",
+        "url": "https://ipm.ucanr.edu/home-and-landscape/moth-or-drain-flies/"
+      }
     ]
   },
   {
-    id: "037",
-    estancia: "Cocina",
-    nombre: "El agua caliente tarda demasiado en llegar",
-    sintomas: "El grifo tarda mucho en dar agua caliente. Puede ser la distancia al calentador, el volumen de tubería o un sistema de recirculación que no funciona.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "💧 Distancia y recirculación", titulo: "Cómo evitar la espera del agua caliente", canal: "Grundfos España", duracion: "Ver enlace", url: "https://www.grundfos.com/es/learn/research-and-insights/How-to-Avoid-Waiting-for-Hot-Water-A-Guide-for-Homeowners" },
-      { etiqueta: "🔄 Sistema de recirculación", titulo: "Instalación mecánica de recirculación COMFORT", canal: "Grundfos ECADEMY", duracion: "Ver enlace", url: "https://www.grundfos.com/es/learn/ecademy/all-courses/the-comfort-hot-water-recirculation-course/comfort-mechanical-installation" },
-      { etiqueta: "⚡ Recirculación bajo demanda", titulo: "Demand Hot Water Recirculating System", canal: "ENERGY STAR", duracion: "Ver enlace", url: "https://www.energystar.gov/products/demand-hot-water-recirculating-system" },
+    "id": "037",
+    "estancia": "Cocina",
+    "nombre": "El agua caliente tarda demasiado en llegar",
+    "sintomas": "El grifo tarda mucho en dar agua caliente. Puede ser la distancia al calentador, el volumen de tubería o un sistema de recirculación que no funciona.",
+    "nivel": "Diagnóstico",
+    "videos": [
+      {
+        "etiqueta": "💧 Distancia y recirculación",
+        "titulo": "Cómo evitar la espera del agua caliente",
+        "canal": "Grundfos España",
+        "duracion": "Ver enlace",
+        "url": "https://www.grundfos.com/es/learn/research-and-insights/How-to-Avoid-Waiting-for-Hot-Water-A-Guide-for-Homeowners"
+      },
+      {
+        "etiqueta": "🔄 Sistema de recirculación",
+        "titulo": "Instalación mecánica de recirculación COMFORT",
+        "canal": "Grundfos ECADEMY",
+        "duracion": "Ver enlace",
+        "url": "https://www.grundfos.com/es/learn/ecademy/all-courses/the-comfort-hot-water-recirculation-course/comfort-mechanical-installation"
+      },
+      {
+        "etiqueta": "⚡ Recirculación bajo demanda",
+        "titulo": "Demand Hot Water Recirculating System",
+        "canal": "ENERGY STAR",
+        "duracion": "Ver enlace",
+        "url": "https://www.energystar.gov/products/demand-hot-water-recirculating-system"
+      }
     ]
   },
   {
-    id: "039",
-    estancia: "Cocina",
-    nombre: "El grifo da pequeños golpes al abrir o cerrar",
-    sintomas: "Se escucha un golpe seco al abrir o cerrar el grifo. Puede ser un golpe de ariete por cierre brusco, una tubería suelta o presión elevada en la instalación.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "🔨 Qué causa el golpe de ariete", titulo: "What causes water hammer?", canal: "Waterhammer.com", duracion: "Ver enlace", url: "https://www.waterhammer.com/" },
-      { etiqueta: "📖 Cierre rápido como ejemplo", titulo: "Water hammer concept", canal: "Waterhammer.com", duracion: "Ver enlace", url: "https://www.waterhammer.com/concept/" },
+    "id": "039",
+    "estancia": "Cocina",
+    "nombre": "El grifo da pequeños golpes al abrir o cerrar",
+    "sintomas": "Se escucha un golpe seco al abrir o cerrar el grifo. Puede ser un golpe de ariete por cierre brusco, una tubería suelta o presión elevada en la instalación.",
+    "nivel": "Diagnóstico",
+    "videos": [
+      {
+        "etiqueta": "🔨 Qué causa el golpe de ariete",
+        "titulo": "What causes water hammer?",
+        "canal": "Waterhammer.com",
+        "duracion": "Ver enlace",
+        "url": "https://www.waterhammer.com/"
+      },
+      {
+        "etiqueta": "📖 Cierre rápido como ejemplo",
+        "titulo": "Water hammer concept",
+        "canal": "Waterhammer.com",
+        "duracion": "Ver enlace",
+        "url": "https://www.waterhammer.com/concept/"
+      }
     ]
   },
   {
-    id: "040",
-    estancia: "Cocina",
-    nombre: "Hay humedad u olor extraño detrás de los muebles",
-    sintomas: "Se detecta olor a humedad o moho detrás de los muebles de cocina. Puede ser una fuga lenta, condensación o una filtración. Hay que investigar antes de tapar.",
-    nivel: "Atención",
-    videos: [
-      { etiqueta: "💧 Condensación vs infiltración", titulo: "Humedades en casa: cómo evitarlas", canal: "OCU España", duracion: "Ver enlace", url: "https://www.ocu.org/vivienda-y-energia/equipamiento-hogar/informe/humedades-casa" },
-      { etiqueta: "🌫 Diferencias y diagnóstico", titulo: "Humedades de condensación", canal: "OCU España", duracion: "Ver enlace", url: "https://www.ocu.org/fincas-y-casas/gestion/urbanismo-y-construccion/analisis/2020/12/humedades-condensacion" },
+    "id": "040",
+    "estancia": "Cocina",
+    "nombre": "Hay humedad u olor extraño detrás de los muebles",
+    "sintomas": "Se detecta olor a humedad o moho detrás de los muebles de cocina. Puede ser una fuga lenta, condensación o una filtración. Hay que investigar antes de tapar.",
+    "nivel": "Atención",
+    "videos": [
+      {
+        "etiqueta": "💧 Condensación vs infiltración",
+        "titulo": "Humedades en casa: cómo evitarlas",
+        "canal": "OCU España",
+        "duracion": "Ver enlace",
+        "url": "https://www.ocu.org/vivienda-y-energia/equipamiento-hogar/informe/humedades-casa"
+      },
+      {
+        "etiqueta": "🌫 Diferencias y diagnóstico",
+        "titulo": "Humedades de condensación",
+        "canal": "OCU España",
+        "duracion": "Ver enlace",
+        "url": "https://www.ocu.org/fincas-y-casas/gestion/urbanismo-y-construccion/analisis/2020/12/humedades-condensacion"
+      }
     ]
   },
   {
-    id: "041",
-    estancia: "Baño",
-    nombre: "La cisterna pierde agua continuamente",
-    sintomas: "El agua corre sin parar hacia la taza. Puede ser la válvula de llenado que no corta a tiempo o la junta de descarga que no sella. Identificar cuál falla evita cambiar piezas innecesarias.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🔧 Mecanismos y repuestos cisterna", titulo: "Mecanismos y soluciones para cisternas", canal: "Roca España", duracion: "Ver enlace", url: "https://www.roca.es/productos/cisternas-mecanismos" },
-      { etiqueta: "💧 Sistemas de descarga y llenado", titulo: "Sistemas de descarga y cisternas", canal: "Geberit España", duracion: "Ver enlace", url: "https://www.geberit.es/productos-para-el-bano/sistemas-de-instalacion-y-descarga/" },
+    "id": "041",
+    "estancia": "Baño",
+    "nombre": "La cisterna pierde agua continuamente",
+    "sintomas": "El agua corre sin parar hacia la taza. Puede ser la válvula de llenado que no corta a tiempo o la junta de descarga que no sella. Identificar cuál falla evita cambiar piezas innecesarias.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "🔧 Mecanismos y repuestos cisterna",
+        "titulo": "Mecanismos y soluciones para cisternas",
+        "canal": "Roca España",
+        "duracion": "Ver enlace",
+        "url": "https://www.roca.es/productos/cisternas-mecanismos"
+      },
+      {
+        "etiqueta": "💧 Sistemas de descarga y llenado",
+        "titulo": "Sistemas de descarga y cisternas",
+        "canal": "Geberit España",
+        "duracion": "Ver enlace",
+        "url": "https://www.geberit.es/productos-para-el-bano/sistemas-de-instalacion-y-descarga/"
+      }
     ]
   },
   {
-    id: "042",
-    estancia: "Baño",
-    nombre: "La cisterna tarda mucho en llenarse",
-    sintomas: "La cisterna llena pero tarda demasiado. Suele ser la llave de paso parcialmente cerrada, el latiguillo doblado o el filtro de entrada con cal.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "⏳ Llenado lento y válvulas", titulo: "Válvulas de llenado para cisternas", canal: "Fluidmaster", duracion: "Ver enlace", url: "https://www.fluidmaster.com/toilet-problems/toilet-fills-slowly/" },
-      { etiqueta: "🔧 Mecanismos de llenado", titulo: "Sistemas de descarga y cisternas", canal: "Geberit España", duracion: "Ver enlace", url: "https://www.geberit.es/productos-para-el-bano/sistemas-de-instalacion-y-descarga/" },
+    "id": "042",
+    "estancia": "Baño",
+    "nombre": "La cisterna tarda mucho en llenarse",
+    "sintomas": "La cisterna llena pero tarda demasiado. Suele ser la llave de paso parcialmente cerrada, el latiguillo doblado o el filtro de entrada con cal.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "⏳ Llenado lento y válvulas",
+        "titulo": "Válvulas de llenado para cisternas",
+        "canal": "Fluidmaster",
+        "duracion": "Ver enlace",
+        "url": "https://www.fluidmaster.com/toilet-problems/toilet-fills-slowly/"
+      },
+      {
+        "etiqueta": "🔧 Mecanismos de llenado",
+        "titulo": "Sistemas de descarga y cisternas",
+        "canal": "Geberit España",
+        "duracion": "Ver enlace",
+        "url": "https://www.geberit.es/productos-para-el-bano/sistemas-de-instalacion-y-descarga/"
+      }
     ]
   },
   {
-    id: "043",
-    estancia: "Baño",
-    nombre: "La cisterna no se llena",
-    sintomas: "La cisterna está vacía y no entra agua. Primero comprueba si el lavabo tiene agua. Puede ser la llave cerrada, el flotador atascado o la válvula de llenado averiada.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "🚱 Cisterna sin llenado · válvula", titulo: "Toilet tank not filling", canal: "Fluidmaster", duracion: "Ver enlace", url: "https://www.fluidmaster.com/toilet-problems/toilet-tank-wont-fill/" },
-      { etiqueta: "🔧 Mecanismos y recambios", titulo: "Mecanismos para cisternas", canal: "Roca España", duracion: "Ver enlace", url: "https://www.roca.es/productos/cisternas-mecanismos" },
+    "id": "043",
+    "estancia": "Baño",
+    "nombre": "La cisterna no se llena",
+    "sintomas": "La cisterna está vacía y no entra agua. Primero comprueba si el lavabo tiene agua. Puede ser la llave cerrada, el flotador atascado o la válvula de llenado averiada.",
+    "nivel": "Diagnóstico",
+    "videos": [
+      {
+        "etiqueta": "🚱 Cisterna sin llenado · válvula",
+        "titulo": "Toilet tank not filling",
+        "canal": "Fluidmaster",
+        "duracion": "Ver enlace",
+        "url": "https://www.fluidmaster.com/toilet-problems/toilet-tank-wont-fill/"
+      },
+      {
+        "etiqueta": "🔧 Mecanismos y recambios",
+        "titulo": "Mecanismos para cisternas",
+        "canal": "Roca España",
+        "duracion": "Ver enlace",
+        "url": "https://www.roca.es/productos/cisternas-mecanismos"
+      }
     ]
   },
   {
-    id: "044",
-    estancia: "Baño",
-    nombre: "El pulsador de la cisterna no funciona",
-    sintomas: "Al pulsar el botón el WC no descarga. La prueba clave es accionar directamente la válvula: si descarga, el fallo está en el pulsador o las varillas; si no, en el mecanismo.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🔘 Pulsadores y mecanismos", titulo: "Pulsadores y mecanismos de cisterna", canal: "Roca España", duracion: "Ver enlace", url: "https://www.roca.es/productos/cisternas-mecanismos" },
-      { etiqueta: "🪛 Placas y pulsadores empotrados", titulo: "Pulsadores de descarga y accesorios", canal: "Geberit España", duracion: "Ver enlace", url: "https://www.geberit.es/productos-para-el-bano/pulsadores-de-descarga-y-accesorios/" },
+    "id": "044",
+    "estancia": "Baño",
+    "nombre": "El pulsador de la cisterna no funciona",
+    "sintomas": "Al pulsar el botón el WC no descarga. La prueba clave es accionar directamente la válvula: si descarga, el fallo está en el pulsador o las varillas; si no, en el mecanismo.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "🔘 Pulsadores y mecanismos",
+        "titulo": "Pulsadores y mecanismos de cisterna",
+        "canal": "Roca España",
+        "duracion": "Ver enlace",
+        "url": "https://www.roca.es/productos/cisternas-mecanismos"
+      },
+      {
+        "etiqueta": "🪛 Placas y pulsadores empotrados",
+        "titulo": "Pulsadores de descarga y accesorios",
+        "canal": "Geberit España",
+        "duracion": "Ver enlace",
+        "url": "https://www.geberit.es/productos-para-el-bano/pulsadores-de-descarga-y-accesorios/"
+      }
     ]
   },
   {
-    id: "045",
-    estancia: "Baño",
-    nombre: "El WC no descarga con suficiente fuerza",
-    sintomas: "La descarga es débil o no arrastra bien. Puede ser el nivel bajo de la cisterna, la válvula que cierra pronto, cal en los orificios o un atasco parcial. Distinguir cuál es el problema antes de actuar.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "🌊 Descarga débil · diagnóstico", titulo: "Problemas de descarga del inodoro", canal: "Fluidmaster", duracion: "Ver enlace", url: "https://www.fluidmaster.com/toilet-problems/weak-toilet-flush/" },
-      { etiqueta: "🚽 Mecanismos y repuestos WC", titulo: "Inodoros y sistemas de descarga", canal: "Roca España", duracion: "Ver enlace", url: "https://www.roca.es/productos/inodoros" },
+    "id": "045",
+    "estancia": "Baño",
+    "nombre": "El WC no descarga con suficiente fuerza",
+    "sintomas": "La descarga es débil o no arrastra bien. Puede ser el nivel bajo de la cisterna, la válvula que cierra pronto, cal en los orificios o un atasco parcial. Distinguir cuál es el problema antes de actuar.",
+    "nivel": "Diagnóstico",
+    "videos": [
+      {
+        "etiqueta": "🌊 Descarga débil · diagnóstico",
+        "titulo": "Problemas de descarga del inodoro",
+        "canal": "Fluidmaster",
+        "duracion": "Ver enlace",
+        "url": "https://www.fluidmaster.com/toilet-problems/weak-toilet-flush/"
+      },
+      {
+        "etiqueta": "🚽 Mecanismos y repuestos WC",
+        "titulo": "Inodoros y sistemas de descarga",
+        "canal": "Roca España",
+        "duracion": "Ver enlace",
+        "url": "https://www.roca.es/productos/inodoros"
+      }
     ]
   },
   {
-    id: "046",
-    estancia: "Baño",
-    nombre: "El WC está atascado",
-    sintomas: "El inodoro no desagua o lo hace muy lentamente. No vuelvas a tirar de la cadena si el nivel está alto. Empieza con un desatascador específico para WC.",
-    nivel: "Fácil/medio",
-    videos: [
-      { etiqueta: "🪠 Desatascar inodoro paso a paso", titulo: "Cómo desatascar un inodoro", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-desatascar-un-inodoro.html" },
-      { etiqueta: "🔧 Diagnóstico y técnicas", titulo: "Toilet clogged: how to unclog", canal: "Fluidmaster", duracion: "Ver enlace", url: "https://www.fluidmaster.com/toilet-problems/clogged-toilet/" },
+    "id": "046",
+    "estancia": "Baño",
+    "nombre": "El WC está atascado",
+    "sintomas": "El inodoro no desagua o lo hace muy lentamente. No vuelvas a tirar de la cadena si el nivel está alto. Empieza con un desatascador específico para WC.",
+    "nivel": "Fácil/medio",
+    "videos": [
+      {
+        "etiqueta": "🪠 Desatascar inodoro paso a paso",
+        "titulo": "Cómo desatascar un inodoro",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-desatascar-un-inodoro.html"
+      },
+      {
+        "etiqueta": "🔧 Diagnóstico y técnicas",
+        "titulo": "Toilet clogged: how to unclog",
+        "canal": "Fluidmaster",
+        "duracion": "Ver enlace",
+        "url": "https://www.fluidmaster.com/toilet-problems/clogged-toilet/"
+      }
     ]
   },
   {
-    id: "047",
-    estancia: "Baño",
-    nombre: "El agua del WC sube demasiado al tirar",
-    sintomas: "Al tirar de la cadena el agua sube mucho en la taza antes de bajar lentamente. Es señal de atasco parcial en el desagüe, no de falta de fuerza en la cisterna.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "⬆️ Agua sube y baja lento", titulo: "Toilet bowl water rises then drains slowly", canal: "Fluidmaster", duracion: "Ver enlace", url: "https://www.fluidmaster.com/toilet-problems/clogged-toilet/" },
-      { etiqueta: "🪠 Desatascar inodoro", titulo: "Cómo desatascar un inodoro", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-desatascar-un-inodoro.html" },
+    "id": "047",
+    "estancia": "Baño",
+    "nombre": "El agua del WC sube demasiado al tirar",
+    "sintomas": "Al tirar de la cadena el agua sube mucho en la taza antes de bajar lentamente. Es señal de atasco parcial en el desagüe, no de falta de fuerza en la cisterna.",
+    "nivel": "Diagnóstico",
+    "videos": [
+      {
+        "etiqueta": "⬆️ Agua sube y baja lento",
+        "titulo": "Toilet bowl water rises then drains slowly",
+        "canal": "Fluidmaster",
+        "duracion": "Ver enlace",
+        "url": "https://www.fluidmaster.com/toilet-problems/clogged-toilet/"
+      },
+      {
+        "etiqueta": "🪠 Desatascar inodoro",
+        "titulo": "Cómo desatascar un inodoro",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-desatascar-un-inodoro.html"
+      }
     ]
   },
   {
-    id: "048",
-    estancia: "Baño",
-    nombre: "Sale agua por la base del inodoro",
-    sintomas: "Aparece agua alrededor de la base del WC. Puede ser la junta de desagüe, una fuga de la cisterna que escurre, o condensación. Seca todo y localiza la primera gota antes de actuar.",
-    nivel: "Atención",
-    videos: [
-      { etiqueta: "💧 Fuga en la base del inodoro", titulo: "Water leaking from base of toilet", canal: "Fluidmaster", duracion: "Ver enlace", url: "https://www.fluidmaster.com/toilet-problems/toilet-leaking-at-base/" },
-      { etiqueta: "🚽 Mecanismos y sanitarios", titulo: "Inodoros y sistemas", canal: "Roca España", duracion: "Ver enlace", url: "https://www.roca.es/productos/inodoros" },
+    "id": "048",
+    "estancia": "Baño",
+    "nombre": "Sale agua por la base del inodoro",
+    "sintomas": "Aparece agua alrededor de la base del WC. Puede ser la junta de desagüe, una fuga de la cisterna que escurre, o condensación. Seca todo y localiza la primera gota antes de actuar.",
+    "nivel": "Atención",
+    "videos": [
+      {
+        "etiqueta": "💧 Fuga en la base del inodoro",
+        "titulo": "Water leaking from base of toilet",
+        "canal": "Fluidmaster",
+        "duracion": "Ver enlace",
+        "url": "https://www.fluidmaster.com/toilet-problems/toilet-leaking-at-base/"
+      },
+      {
+        "etiqueta": "🚽 Mecanismos y sanitarios",
+        "titulo": "Inodoros y sistemas",
+        "canal": "Roca España",
+        "duracion": "Ver enlace",
+        "url": "https://www.roca.es/productos/inodoros"
+      }
     ]
   },
   {
-    id: "049",
-    estancia: "Baño",
-    nombre: "El inodoro se mueve",
-    sintomas: "El WC se balancea al sentarse. Las fijaciones están sueltas o el apoyo es irregular. Hay que corregirlo cuanto antes para evitar que dañe la junta de desagüe.",
-    nivel: "Atención",
-    videos: [
-      { etiqueta: "↔️ Inodoro que se mueve", titulo: "Toilet rocking or loose at base", canal: "Fluidmaster", duracion: "Ver enlace", url: "https://www.fluidmaster.com/toilet-problems/toilet-rocking-or-loose/" },
-      { etiqueta: "🔩 Sanitarios Roca", titulo: "Inodoros Roca", canal: "Roca España", duracion: "Ver enlace", url: "https://www.roca.es/productos/inodoros" },
+    "id": "049",
+    "estancia": "Baño",
+    "nombre": "El inodoro se mueve",
+    "sintomas": "El WC se balancea al sentarse. Las fijaciones están sueltas o el apoyo es irregular. Hay que corregirlo cuanto antes para evitar que dañe la junta de desagüe.",
+    "nivel": "Atención",
+    "videos": [
+      {
+        "etiqueta": "↔️ Inodoro que se mueve",
+        "titulo": "Toilet rocking or loose at base",
+        "canal": "Fluidmaster",
+        "duracion": "Ver enlace",
+        "url": "https://www.fluidmaster.com/toilet-problems/toilet-rocking-or-loose/"
+      },
+      {
+        "etiqueta": "🔩 Sanitarios Roca",
+        "titulo": "Inodoros Roca",
+        "canal": "Roca España",
+        "duracion": "Ver enlace",
+        "url": "https://www.roca.es/productos/inodoros"
+      }
     ]
   },
   {
-    id: "050",
-    estancia: "Baño",
-    nombre: "El WC huele mal",
-    sintomas: "Hay mal olor en el baño que parece venir del inodoro. Puede ser suciedad, la conexión de desagüe defectuosa o un sifón cercano seco. Primero limpia y después investiga.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "👃 Olor a alcantarilla diagnóstico", titulo: "Toilet smells bad: causes and solutions", canal: "Fluidmaster", duracion: "Ver enlace", url: "https://www.fluidmaster.com/toilet-problems/sewer-smell-in-bathroom/" },
-      { etiqueta: "🚽 Mecanismos y sanitarios", titulo: "Inodoros Roca", canal: "Roca España", duracion: "Ver enlace", url: "https://www.roca.es/productos/inodoros" },
+    "id": "050",
+    "estancia": "Baño",
+    "nombre": "El WC huele mal",
+    "sintomas": "Hay mal olor en el baño que parece venir del inodoro. Puede ser suciedad, la conexión de desagüe defectuosa o un sifón cercano seco. Primero limpia y después investiga.",
+    "nivel": "Diagnóstico",
+    "videos": [
+      {
+        "etiqueta": "👃 Olor a alcantarilla diagnóstico",
+        "titulo": "Toilet smells bad: causes and solutions",
+        "canal": "Fluidmaster",
+        "duracion": "Ver enlace",
+        "url": "https://www.fluidmaster.com/toilet-problems/sewer-smell-in-bathroom/"
+      },
+      {
+        "etiqueta": "🚽 Mecanismos y sanitarios",
+        "titulo": "Inodoros Roca",
+        "canal": "Roca España",
+        "duracion": "Ver enlace",
+        "url": "https://www.roca.es/productos/inodoros"
+      }
     ]
   },
   {
-    id: "051",
-    estancia: "Baño",
-    nombre: "La tapa del inodoro está floja o desplazada",
-    sintomas: "La tapa o el asiento del WC se mueve lateralmente o no queda centrado. Casi siempre es un problema de fijaciones flojas que se resuelve en minutos sin cambiar nada.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🪑 Tapas y asientos de inodoro", titulo: "Tapas y asientos de inodoro", canal: "Roca España", duracion: "Ver enlace", url: "https://www.roca.es/productos/tapas-de-inodoro" },
-      { etiqueta: "🔩 Guía de sustitución y ajuste", titulo: "Toilet seat fitting guide", canal: "Geberit", duracion: "Ver enlace", url: "https://www.geberit.es/productos-para-el-bano/pulsadores-de-descarga-y-accesorios/" },
+    "id": "051",
+    "estancia": "Baño",
+    "nombre": "La tapa del inodoro está floja o desplazada",
+    "sintomas": "La tapa o el asiento del WC se mueve lateralmente o no queda centrado. Casi siempre es un problema de fijaciones flojas que se resuelve en minutos sin cambiar nada.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "🪑 Tapas y asientos de inodoro",
+        "titulo": "Tapas y asientos de inodoro",
+        "canal": "Roca España",
+        "duracion": "Ver enlace",
+        "url": "https://www.roca.es/productos/tapas-de-inodoro"
+      },
+      {
+        "etiqueta": "🔩 Guía de sustitución y ajuste",
+        "titulo": "Toilet seat fitting guide",
+        "canal": "Geberit",
+        "duracion": "Ver enlace",
+        "url": "https://www.geberit.es/productos-para-el-bano/pulsadores-de-descarga-y-accesorios/"
+      }
     ]
   },
   {
-    id: "052",
-    estancia: "Baño",
-    nombre: "El lavabo desagua lentamente",
-    sintomas: "El agua baja pero cada vez más despacio. Suele ser pelos y jabón acumulados en el tapón o el sifón. Mejor actuar antes de que se atasque del todo.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🐌 Desagüe lento lavabo", titulo: "Cómo desatascar un lavabo", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-desatascar-lavabo.html" },
-      { etiqueta: "🧽 Limpiar sifón y desagüe", titulo: "Limpiar sifón y desatascar", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html" },
+    "id": "052",
+    "estancia": "Baño",
+    "nombre": "El lavabo desagua lentamente",
+    "sintomas": "El agua baja pero cada vez más despacio. Suele ser pelos y jabón acumulados en el tapón o el sifón. Mejor actuar antes de que se atasque del todo.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "🐌 Desagüe lento lavabo",
+        "titulo": "Cómo desatascar un lavabo",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-desatascar-lavabo.html"
+      },
+      {
+        "etiqueta": "🧽 Limpiar sifón y desagüe",
+        "titulo": "Limpiar sifón y desatascar",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html"
+      }
     ]
   },
   {
-    id: "053",
-    estancia: "Baño",
-    nombre: "El lavabo está completamente atascado",
-    sintomas: "El agua no baja en absoluto. No añadas más agua. Empieza por el tapón y la ventosa; si no funciona, desmonta el sifón. Si el sifón está libre, el atasco está más dentro.",
-    nivel: "Fácil/medio",
-    videos: [
-      { etiqueta: "🚫 Lavabo completamente atascado", titulo: "Cómo desatascar un lavabo", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-desatascar-lavabo.html" },
-      { etiqueta: "🪣 Sifón y atasco profundo", titulo: "Cómo limpiar un sifón y desatascar", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html" },
+    "id": "053",
+    "estancia": "Baño",
+    "nombre": "El lavabo está completamente atascado",
+    "sintomas": "El agua no baja en absoluto. No añadas más agua. Empieza por el tapón y la ventosa; si no funciona, desmonta el sifón. Si el sifón está libre, el atasco está más dentro.",
+    "nivel": "Fácil/medio",
+    "videos": [
+      {
+        "etiqueta": "🚫 Lavabo completamente atascado",
+        "titulo": "Cómo desatascar un lavabo",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-desatascar-lavabo.html"
+      },
+      {
+        "etiqueta": "🪣 Sifón y atasco profundo",
+        "titulo": "Cómo limpiar un sifón y desatascar",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html"
+      }
     ]
   },
   {
-    id: "054",
-    estancia: "Baño",
-    nombre: "El sifón del lavabo pierde agua",
-    sintomas: "Gotea agua bajo el lavabo al usarlo. Puede ser una tuerca floja, una junta mal colocada o el sifón fisurado. Seca todo y localiza la primera gota antes de desmontar.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "💧 Juntas y sifón · desagüe lavabo", titulo: "Cómo instalar el desagüe de un fregadero", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-el-desague-de-un-fregadero.html" },
-      { etiqueta: "🧽 Limpiar sifón y revisar uniones", titulo: "Cómo limpiar un sifón y desatascar", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html" },
+    "id": "054",
+    "estancia": "Baño",
+    "nombre": "El sifón del lavabo pierde agua",
+    "sintomas": "Gotea agua bajo el lavabo al usarlo. Puede ser una tuerca floja, una junta mal colocada o el sifón fisurado. Seca todo y localiza la primera gota antes de desmontar.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "💧 Juntas y sifón · desagüe lavabo",
+        "titulo": "Cómo instalar el desagüe de un fregadero",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-el-desague-de-un-fregadero.html"
+      },
+      {
+        "etiqueta": "🧽 Limpiar sifón y revisar uniones",
+        "titulo": "Cómo limpiar un sifón y desatascar",
+        "canal": "Leroy Merlin España",
+        "duracion": "Ver enlace",
+        "url": "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html"
+      }
     ]
   },
   {
-    id: "055",
-    estancia: "Baño",
-    nombre: "El lavabo huele mal",
-    sintomas: "Hay mal olor en el lavabo. Suele ser biofilm en el tapón, el rebosadero o el sifón. No olvides limpiar el rebosadero interior, que es el foco más olvidado.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "👃 Malos olores desagüe lavabo", titulo: "Malos olores persistentes: causas y soluciones", canal: "Bricocrack", duracion: "Ver enlace", url: "https://www.youtube.com/watch?v=SlBkYAhe04s" },
-      { etiqueta: "🧽 Limpiar sifón paso a paso", titulo: "Limpiar sifón fregadero", canal: "Reparaciones del Hogar", duracion: "Ver enlace", url: "https://www.youtube.com/watch?v=QtOXr7AN2Kc" },
+    "id": "055",
+    "estancia": "Baño",
+    "nombre": "El lavabo huele mal",
+    "sintomas": "Hay mal olor en el lavabo. Suele ser biofilm en el tapón, el rebosadero o el sifón. No olvides limpiar el rebosadero interior, que es el foco más olvidado.",
+    "nivel": "Fácil",
+    "videos": [
+      {
+        "etiqueta": "👃 Malos olores desagüe lavabo",
+        "titulo": "Malos olores persistentes: causas y soluciones",
+        "canal": "Bricocrack",
+        "duracion": "Ver enlace",
+        "url": "https://www.youtube.com/watch?v=SlBkYAhe04s"
+      },
+      {
+        "etiqueta": "🧽 Limpiar sifón paso a paso",
+        "titulo": "Limpiar sifón fregadero",
+        "canal": "Reparaciones del Hogar",
+        "duracion": "Ver enlace",
+        "url": "https://www.youtube.com/watch?v=QtOXr7AN2Kc"
+      }
     ]
-  },
+  }
 ];
-
-// ============================================================
-// LÓGICA — no tocar
-// ============================================================
 
 function nivelClass(nivel) {
   if (!nivel) return "";
-  const n = nivel.toLowerCase().replace(/[^a-záéíóúü]/gi,"");
-  if (n.includes("facil") || n.includes("fácil")) return "tag-nivel-facil";
-  if (n.includes("media")) return "tag-nivel-media";
-  if (n.includes("dificil") || n.includes("difícil")) return "tag-nivel-dificil";
+  var n = nivel.toLowerCase();
+  if (n.indexOf("facil") >= 0 || n.indexOf("fcil") >= 0 || n.indexOf("easy") >= 0) return "tag-nivel-facil";
+  if (n.indexOf("media") >= 0 || n.indexOf("inter") >= 0 || n.indexOf("diagn") >= 0) return "tag-nivel-media";
+  if (n.indexOf("dific") >= 0 || n.indexOf("aten") >= 0) return "tag-nivel-dificil";
   return "tag-nivel-facil";
 }
 
 function renderLista(lista) {
-  const container = document.getElementById("vista-lista");
-  if (lista.length === 0) {
-    container.innerHTML = `<div class="no-resultados">No se encontró ninguna avería.<br>Prueba con otras palabras.</div>`;
+  var container = document.getElementById("vista-lista");
+  if (!lista || lista.length === 0) {
+    container.innerHTML = "<div class=\"no-resultados\">No se encontro ninguna averia.<br>Prueba con otras palabras.</div>";
     return;
   }
-
-  // Agrupar por estancia
-  const grupos = {};
-  lista.forEach(a => {
+  var grupos = {};
+  lista.forEach(function(a) {
     if (!grupos[a.estancia]) grupos[a.estancia] = [];
     grupos[a.estancia].push(a);
   });
-
-  let html = "";
-  for (const estancia in grupos) {
-    html += `<div class="estancia-label">${estancia}</div>`;
-    grupos[estancia].forEach(a => {
-      const tieneVideo = a.videos && a.videos.length > 0;
-      html += `
-        <div class="averia-item" onclick="verAveria('${a.id}')">
-          <div class="averia-id-badge">${a.id}</div>
-          <div class="averia-info">
-            <div class="averia-nombre">${a.nombre}</div>
-            <div class="averia-tags">
-              <span class="tag tag-estancia">${a.estancia}</span>
-              ${a.nivel ? `<span class="tag ${nivelClass(a.nivel)}">${a.nivel}</span>` : ""}
-              ${!tieneVideo ? `<span class="tag tag-sin-video">Vídeo próximamente</span>` : ""}
-            </div>
-          </div>
-          <div class="averia-arrow">›</div>
-        </div>`;
+  var html = "";
+  Object.keys(grupos).forEach(function(estancia) {
+    html += "<div class=\"estancia-label\">" + estancia + "</div>";
+    grupos[estancia].forEach(function(a) {
+      var tieneVideo = a.videos && a.videos.length > 0;
+      html += "<div class=\"averia-item\" onclick=\"verAveria('" + a.id + "')\">";
+      html += "<div class=\"averia-id-badge\">" + a.id + "</div>";
+      html += "<div class=\"averia-info\">";
+      html += "<div class=\"averia-nombre\">" + a.nombre + "</div>";
+      html += "<div class=\"averia-tags\">";
+      html += "<span class=\"tag tag-estancia\">" + a.estancia + "</span>";
+      if (a.nivel) html += "<span class=\"tag " + nivelClass(a.nivel) + "\">" + a.nivel + "</span>";
+      if (!tieneVideo) html += "<span class=\"tag tag-sin-video\">Proximamente</span>";
+      html += "</div></div>";
+      html += "<div class=\"averia-arrow\">&#8250;</div>";
+      html += "</div>";
     });
-  }
+  });
   container.innerHTML = html;
 }
 
 function filtrar() {
-  const q = document.getElementById("buscador").value.toLowerCase().trim();
+  var q = document.getElementById("buscador").value.toLowerCase().trim();
   if (!q) { renderLista(AVERIAS); return; }
-  const filtradas = AVERIAS.filter(a =>
-    a.nombre.toLowerCase().includes(q) ||
-    a.estancia.toLowerCase().includes(q) ||
-    (a.sintomas && a.sintomas.toLowerCase().includes(q))
-  );
+  var filtradas = AVERIAS.filter(function(a) {
+    return a.nombre.toLowerCase().indexOf(q) >= 0 ||
+           a.estancia.toLowerCase().indexOf(q) >= 0 ||
+           (a.sintomas && a.sintomas.toLowerCase().indexOf(q) >= 0);
+  });
   renderLista(filtradas);
 }
 
 function verAveria(id) {
-  const a = AVERIAS.find(x => x.id === id);
-  if (!a) return;
-
+  var a = null;
+  for (var i = 0; i < AVERIAS.length; i++) {
+    if (AVERIAS[i].id === id) { a = AVERIAS[i]; break; }
+  }
+  if (!a) {
+    document.getElementById("vista-lista").style.display = "none";
+    document.getElementById("vista-averia").style.display = "block";
+    document.getElementById("detalle-contenido").innerHTML = "<div style=\"padding:40px;text-align:center;color:#aaa;\">Averia " + id + " no encontrada.</div>";
+    return;
+  }
   window.scrollTo(0, 0);
   document.getElementById("vista-lista").style.display = "none";
   document.getElementById("vista-averia").style.display = "block";
-
-  const etiquetas = ["Vídeo recomendado", "Alternativa", "Otra opción"];
-  let videosHTML = "";
-
+  var videosHTML = "";
   if (a.videos && a.videos.length > 0) {
-    videosHTML = `<div class="videos-seccion">Vídeos seleccionados</div>`;
-    a.videos.forEach((v, i) => {
-      videosHTML += `
-        <div class="video-card">
-          <div class="video-etiqueta">${v.etiqueta || etiquetas[i] || "Vídeo"}</div>
-          <div class="video-titulo">${v.titulo}</div>
-          <div class="video-meta">
-            <span>📺 ${v.canal}</span>
-            <span>⏱ ${v.duracion}</span>
-          </div>
-          <a href="${v.url}" target="_blank" class="btn-ver">▶ VER VÍDEO</a>
-        </div>`;
+    videosHTML = "<div class=\"videos-seccion\">Videos seleccionados</div>";
+    a.videos.forEach(function(v, i) {
+      videosHTML += "<div class=\"video-card\">";
+      videosHTML += "<div class=\"video-etiqueta\">" + (v.etiqueta || "Video") + "</div>";
+      videosHTML += "<div class=\"video-titulo\">" + v.titulo + "</div>";
+      videosHTML += "<div class=\"video-meta\"><span>&#128250; " + v.canal + "</span></div>";
+      videosHTML += "<a href=\"" + v.url + "\" target=\"_blank\" class=\"btn-ver\">&#9654; VER VIDEO / RECURSO</a>";
+      videosHTML += "</div>";
     });
   } else {
-    videosHTML = `
-      <div class="videos-seccion">Vídeos seleccionados</div>
-      <div class="sin-video-msg">
-        🎬 Vídeos en preparación.<br>Próximamente disponibles.
-      </div>`;
+    videosHTML = "<div class=\"videos-seccion\">Videos seleccionados</div><div class=\"sin-video-msg\">Videos en preparacion.<br>Proximamente disponibles.</div>";
   }
-
-  document.getElementById("detalle-contenido").innerHTML = `
-    <div class="detalle-hero">
-      <div class="detalle-id">AVERÍA ${a.id}</div>
-      <h1 class="detalle-titulo">${a.nombre}</h1>
-      <div class="averia-tags">
-        <span class="tag tag-estancia">${a.estancia}</span>
-        ${a.nivel ? `<span class="tag ${nivelClass(a.nivel)}">${a.nivel}</span>` : ""}
-      </div>
-    </div>
-    <div class="sintomas-box">
-      <div class="sintomas-label">¿Qué estás notando?</div>
-      <div class="sintomas-text">${a.sintomas}</div>
-    </div>
-    ${videosHTML}
-  `;
+  document.getElementById("detalle-contenido").innerHTML =
+    "<div class=\"detalle-hero\">" +
+    "<div class=\"detalle-id\">AVERIA " + a.id + "</div>" +
+    "<h1 class=\"detalle-titulo\">" + a.nombre + "</h1>" +
+    "<div class=\"averia-tags\"><span class=\"tag tag-estancia\">" + a.estancia + "</span>" +
+    (a.nivel ? "<span class=\"tag " + nivelClass(a.nivel) + "\">" + a.nivel + "</span>" : "") +
+    "</div></div>" +
+    "<div class=\"sintomas-box\"><div class=\"sintomas-label\">Que estas notando?</div><div class=\"sintomas-text\">" + a.sintomas + "</div></div>" +
+    videosHTML;
 }
 
 function volverLista() {
@@ -1015,389 +1472,14 @@ function volverLista() {
   renderLista(AVERIAS);
 }
 
-// Manejar el botón atrás del móvil
-window.addEventListener("popstate", () => {
+window.addEventListener("popstate", function() {
   if (document.getElementById("vista-averia").style.display === "block") {
     volverLista();
   }
 });
 
-  {
-    id: "021",
-    estancia: "Cocina",
-    nombre: "El mueble bajo fregadero está hinchado por humedad",
-    sintomas: "El tablero del mueble bajo el fregadero está abombado o blando. Primero hay que localizar y reparar la fuga; después secar y valorar si el tablero se puede recuperar o hay que sustituirlo.",
-    nivel: "Fácil/medio",
-    videos: [
-      { etiqueta: "📖 Sellado y prevención de humedad", titulo: "Cómo instalar un fregadero", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-un-fregadero.html" },
-    ]
-  },
-  {
-    id: "022",
-    estancia: "Cocina",
-    nombre: "La campana extractora no enciende",
-    sintomas: "La campana no da ninguna señal al encenderla: ni luz ni motor. Empieza comprobando la toma de corriente con otro aparato antes de tocar nada de la campana.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "🔌 Ayuda oficial de fabricante", titulo: "Ayuda y asistencia para campanas extractoras", canal: "Bosch Home España", duracion: "Ver enlace", url: "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas" },
-    ]
-  },
-  {
-    id: "023",
-    estancia: "Cocina",
-    nombre: "La campana enciende pero no aspira",
-    sintomas: "La campana se enciende y el motor suena, pero aspira poco o nada. La primera causa son los filtros saturados de grasa o el filtro de carbón en modelos de recirculación.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🧽 Limpieza y mantenimiento de filtros", titulo: "Ayuda y asistencia para campanas extractoras", canal: "Bosch Home España", duracion: "Ver enlace", url: "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas" },
-    ]
-  },
-  {
-    id: "024",
-    estancia: "Cocina",
-    nombre: "La campana hace demasiado ruido",
-    sintomas: "La campana hace más ruido de lo normal: vibración, traqueteo, silbido o roce. La mayoría de las veces es un filtro mal colocado o una fijación floja.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "🔊 Diagnóstico y mantenimiento campanas", titulo: "Ayuda y asistencia para campanas extractoras", canal: "Bosch Home España", duracion: "Ver enlace", url: "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas" },
-    ]
-  },
-  {
-    id: "025",
-    estancia: "Cocina",
-    nombre: "La campana gotea grasa",
-    sintomas: "Aparecen gotas pegajosas amarillas o marrones cayendo de la campana. Suele ser un filtro metálico saturado que no puede retener más grasa.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🧽 Limpieza y mantenimiento campanas", titulo: "Ayuda y asistencia para campanas extractoras", canal: "Bosch Home España", duracion: "Ver enlace", url: "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas" },
-    ]
-  },
-  {
-    id: "026",
-    estancia: "Cocina",
-    nombre: "La luz de la campana no funciona",
-    sintomas: "El motor de la campana funciona pero la iluminación no. Puede ser una bombilla agotada, un módulo LED o un fallo en el mando. Identifica el modelo antes de comprar nada.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "💡 Averías bombillas y campanas", titulo: "Averías comunes de campanas extractoras", canal: "Teka España", duracion: "Ver enlace", url: "https://www.teka.com/es-es/inspiracion/consejos-y-mantenimiento/uso/averias-campana-extractora/" },
-      { etiqueta: "🔧 Soporte oficial por modelo", titulo: "Ayuda y asistencia para campanas", canal: "Bosch Home España", duracion: "Ver enlace", url: "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas" },
-    ]
-  },
-  {
-    id: "027",
-    estancia: "Cocina",
-    nombre: "La campana vibra",
-    sintomas: "La campana produce una vibración molesta al funcionar. Puede ser un filtro mal colocado, una fijación floja, el conducto o la turbina. Identifica cuándo empeora antes de desmontar nada.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "❓ Preguntas frecuentes vibración y ruido", titulo: "Preguntas frecuentes de campanas extractoras", canal: "Teka Soporte España", duracion: "Ver enlace", url: "https://www.teka.com/es-es/faq_cat/campanas-faq/" },
-      { etiqueta: "⚙️ Ruidos y vibraciones anómalas", titulo: "Por qué una campana deja de funcionar correctamente", canal: "Teka España", duracion: "Ver enlace", url: "https://www.teka.com/es-es/inspiracion/por-que-mi-campana-extractora-no-funciona/" },
-    ]
-  },
-  {
-    id: "028",
-    estancia: "Cocina",
-    nombre: "Una puerta de armario está caída o desalineada",
-    sintomas: "La puerta de un mueble de cocina no cierra bien, roza con la vecina o está más baja de un lado. Las bisagras modernas permiten ajuste en tres direcciones sin cambiar ninguna pieza.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🔧 Ajuste tridimensional bisagras", titulo: "Montaje y ajuste de bisagras", canal: "Blum España", duracion: "Ver enlace", url: "https://www.blum.com/es/es/services/assembly-adjustment/" },
-      { etiqueta: "📖 CLIP top ajuste 3D", titulo: "CLIP top: montaje y ajuste tridimensional", canal: "Blum España", duracion: "Ver enlace", url: "https://www.blum.com/es/es/products/hingesystems/clip-top/assembly/" },
-      { etiqueta: "🏠 Ejemplo sistema cocina", titulo: "METOD: regulación de bisagras", canal: "IKEA España", duracion: "Ver enlace", url: "https://www.ikea.com/es/es/p/metod-armario-para-fregadero-con-puerta-s29586227/" },
-    ]
-  },
-  {
-    id: "029",
-    estancia: "Cocina",
-    nombre: "Una bisagra de cocina está floja o arrancada",
-    sintomas: "La bisagra del mueble se mueve o ha arrancado del tablero. Si el tornillo simplemente se aflojó, se reaprecia. Si gira en vacío, el agujero del tablero está dañado.",
-    nivel: "Fácil/medio",
-    videos: [
-      { etiqueta: "🔩 Sistemas de bisagras y montaje", titulo: "Sistemas de bisagras y ayudas de montaje", canal: "Blum España", duracion: "Ver enlace", url: "https://www.blum.com/es/es/products/hingesystems/overview/" },
-      { etiqueta: "🔧 Referencia alternativa", titulo: "Bisagras para muebles", canal: "Hettich España", duracion: "Ver enlace", url: "https://www.hettich.com/es-es/productos/bisagras" },
-    ]
-  },
-  {
-    id: "030",
-    estancia: "Cocina",
-    nombre: "Un cajón no abre o cierra correctamente",
-    sintomas: "El cajón se atasca, no entra del todo o cuesta moverlo. Vacíalo primero: un objeto detrás o el exceso de peso son las causas más frecuentes antes de revisar las guías.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🗄 Montaje y ajuste herrajes", titulo: "Montaje y ajuste de herrajes", canal: "Blum España", duracion: "Ver enlace", url: "https://www.blum.com/es/es/services/assembly-adjustment/" },
-      { etiqueta: "📖 Cajón con cierre suave", titulo: "METOD/MAXIMERA cajón con cierre suave", canal: "IKEA España", duracion: "Ver enlace", url: "https://www.ikea.com/es/es/p/metod-maximera-armario-bajo-con-cajon-puerta-s99586059/" },
-    ]
-  },
-  {
-    id: "031",
-    estancia: "Cocina",
-    nombre: "Un cajón se sale de las guías",
-    sintomas: "El cajón llega demasiado lejos o se sale completamente. Vacíalo primero y compara los enganches de ambos lados: normalmente uno no está bloqueado correctamente.",
-    nivel: "Fácil/medio",
-    videos: [
-      { etiqueta: "🗄 Sistemas extraíbles · montaje", titulo: "Montaje y ajuste de sistemas extraíbles", canal: "Blum España", duracion: "Ver enlace", url: "https://www.blum.com/es/es/services/assembly-adjustment/" },
-      { etiqueta: "🔧 Identificar herrajes de cajón", titulo: "Sistemas de cajones y guías", canal: "Hettich España", duracion: "Ver enlace", url: "https://www.hettich.com/es-es/productos/sistemas-de-cajones" },
-    ]
-  },
-  {
-    id: "032",
-    estancia: "Cocina",
-    nombre: "La encimera se ha hinchado cerca del fregadero",
-    sintomas: "La encimera laminada está abombada o hinchada cerca del fregadero. Primero hay que detener la entrada de agua y luego valorar si el tablero sigue siendo estable o hay que sustituirlo.",
-    nivel: "Atención",
-    videos: [
-      { etiqueta: "🏠 Cuidados de encimeras de cocina", titulo: "Cuidados y mantenimiento de encimeras", canal: "IKEA España", duracion: "Ver enlace", url: "https://www.ikea.com/es/es/customer-service/product-support/kitchen/" },
-      { etiqueta: "💧 Sellado zonas húmedas", titulo: "Soluciones de sellado para cocina y baño", canal: "Soudal España", duracion: "Ver enlace", url: "https://www.soudal.es/pro/aplicaciones/sellado" },
-    ]
-  },
-  {
-    id: "033",
-    estancia: "Cocina",
-    nombre: "La junta entre encimera y pared se ha abierto",
-    sintomas: "Hay un hueco visible entre la encimera y la pared o el azulejo. Hay que retirar toda la silicona vieja, limpiar bien y aplicar un cordón continuo nuevo sobre superficie seca.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "〰️ Sellado de juntas en zonas húmedas", titulo: "Sellado de juntas en zonas húmedas", canal: "Sika España", duracion: "Ver enlace", url: "https://esp.sika.com/es/construccion/sellado-pegado.html" },
-      { etiqueta: "🧴 Selladores domésticos", titulo: "Selladores para cocinas y baños", canal: "Ceys", duracion: "Ver enlace", url: "https://www.mundoceys.com/" },
-    ]
-  },
-  {
-    id: "034",
-    estancia: "Cocina",
-    nombre: "Una baldosa está suelta",
-    sintomas: "Un azulejo se mueve o suena hueco al golpearlo. Si es una pieza aislada con el soporte seco y firme, puede retirarse y recolocarse. Varias piezas sueltas o humedad indican un problema mayor.",
-    nivel: "Fácil/medio",
-    videos: [
-      { etiqueta: "🪣 Adhesivos y soluciones cerámicas", titulo: "Guías y soluciones para colocación cerámica", canal: "Mapei España", duracion: "Ver enlace", url: "https://www.mapei.com/es/es/productos-y-soluciones" },
-      { etiqueta: "📖 Referencia sector cerámico", titulo: "Colocación y mantenimiento cerámico", canal: "Porcelanosa", duracion: "Ver enlace", url: "https://www.porcelanosa.com/" },
-    ]
-  },
-  {
-    id: "035",
-    estancia: "Cocina",
-    nombre: "Las juntas de los azulejos están deterioradas",
-    sintomas: "Las juntas entre azulejos están negras, con huecos o agrietadas. Primero limpia para distinguir suciedad de deterioro real: muchas juntas oscuras no necesitan reparación.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🧱 Rejuntados cerámicos", titulo: "Soluciones de rejuntado cerámico", canal: "Mapei España", duracion: "Ver enlace", url: "https://www.mapei.com/es/es/productos-y-soluciones/lineas-de-productos/materiales-para-ceramica" },
-      { etiqueta: "🔧 Morteros y reparación", titulo: "Morteros para juntas y colocación cerámica", canal: "Weber España", duracion: "Ver enlace", url: "https://www.es.weber/" },
-    ]
-  },
-  {
-    id: "036",
-    estancia: "Cocina",
-    nombre: "Salen pequeños insectos del desagüe",
-    sintomas: "Aparecen pequeñas mosquitas o moscas cerca del fregadero. Suelen reproducirse en el biofilm del desagüe. La solución es eliminar la materia orgánica, no solo matar los adultos.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🪰 Identificación y biofilm", titulo: "Drain Flies: identificación y control", canal: "University of Maryland Extension", duracion: "Ver enlace", url: "https://extension.umd.edu/resource/drain-flies" },
-      { etiqueta: "🩹 Prueba de cinta y limpieza", titulo: "Drain Fly Psychoda spp.", canal: "University of Florida IFAS", duracion: "Ver enlace", url: "https://ask.ifas.ufl.edu/publication/IN1226" },
-      { etiqueta: "🧽 Eliminar biofilm como solución", titulo: "Moth or Drain Flies", canal: "UC Integrated Pest Management", duracion: "Ver enlace", url: "https://ipm.ucanr.edu/home-and-landscape/moth-or-drain-flies/" },
-    ]
-  },
-  {
-    id: "037",
-    estancia: "Cocina",
-    nombre: "El agua caliente tarda demasiado en llegar",
-    sintomas: "El grifo tarda mucho en dar agua caliente. Puede ser la distancia al calentador, el volumen de tubería o un sistema de recirculación que no funciona.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "💧 Distancia y recirculación", titulo: "Cómo evitar la espera del agua caliente", canal: "Grundfos España", duracion: "Ver enlace", url: "https://www.grundfos.com/es/learn/research-and-insights/How-to-Avoid-Waiting-for-Hot-Water-A-Guide-for-Homeowners" },
-      { etiqueta: "🔄 Sistema de recirculación", titulo: "Instalación mecánica de recirculación COMFORT", canal: "Grundfos ECADEMY", duracion: "Ver enlace", url: "https://www.grundfos.com/es/learn/ecademy/all-courses/the-comfort-hot-water-recirculation-course/comfort-mechanical-installation" },
-      { etiqueta: "⚡ Recirculación bajo demanda", titulo: "Demand Hot Water Recirculating System", canal: "ENERGY STAR", duracion: "Ver enlace", url: "https://www.energystar.gov/products/demand-hot-water-recirculating-system" },
-    ]
-  },
-  {
-    id: "039",
-    estancia: "Cocina",
-    nombre: "El grifo da pequeños golpes al abrir o cerrar",
-    sintomas: "Se escucha un golpe seco al abrir o cerrar el grifo. Puede ser un golpe de ariete por cierre brusco, una tubería suelta o presión elevada en la instalación.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "🔨 Qué causa el golpe de ariete", titulo: "What causes water hammer?", canal: "Waterhammer.com", duracion: "Ver enlace", url: "https://www.waterhammer.com/" },
-      { etiqueta: "📖 Cierre rápido como ejemplo", titulo: "Water hammer concept", canal: "Waterhammer.com", duracion: "Ver enlace", url: "https://www.waterhammer.com/concept/" },
-    ]
-  },
-  {
-    id: "040",
-    estancia: "Cocina",
-    nombre: "Hay humedad u olor extraño detrás de los muebles",
-    sintomas: "Se detecta olor a humedad o moho detrás de los muebles de cocina. Puede ser una fuga lenta, condensación o una filtración. Hay que investigar antes de tapar.",
-    nivel: "Atención",
-    videos: [
-      { etiqueta: "💧 Condensación vs infiltración", titulo: "Humedades en casa: cómo evitarlas", canal: "OCU España", duracion: "Ver enlace", url: "https://www.ocu.org/vivienda-y-energia/equipamiento-hogar/informe/humedades-casa" },
-      { etiqueta: "🌫 Diferencias y diagnóstico", titulo: "Humedades de condensación", canal: "OCU España", duracion: "Ver enlace", url: "https://www.ocu.org/fincas-y-casas/gestion/urbanismo-y-construccion/analisis/2020/12/humedades-condensacion" },
-    ]
-  },
-  {
-    id: "041",
-    estancia: "Baño",
-    nombre: "La cisterna pierde agua continuamente",
-    sintomas: "El agua corre sin parar hacia la taza. Puede ser la válvula de llenado que no corta a tiempo o la junta de descarga que no sella. Identificar cuál falla evita cambiar piezas innecesarias.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🔧 Mecanismos y repuestos cisterna", titulo: "Mecanismos y soluciones para cisternas", canal: "Roca España", duracion: "Ver enlace", url: "https://www.roca.es/productos/cisternas-mecanismos" },
-      { etiqueta: "💧 Sistemas de descarga y llenado", titulo: "Sistemas de descarga y cisternas", canal: "Geberit España", duracion: "Ver enlace", url: "https://www.geberit.es/productos-para-el-bano/sistemas-de-instalacion-y-descarga/" },
-    ]
-  },
-  {
-    id: "042",
-    estancia: "Baño",
-    nombre: "La cisterna tarda mucho en llenarse",
-    sintomas: "La cisterna llena pero tarda demasiado. Suele ser la llave de paso parcialmente cerrada, el latiguillo doblado o el filtro de entrada con cal.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "⏳ Llenado lento y válvulas", titulo: "Válvulas de llenado para cisternas", canal: "Fluidmaster", duracion: "Ver enlace", url: "https://www.fluidmaster.com/toilet-problems/toilet-fills-slowly/" },
-      { etiqueta: "🔧 Mecanismos de llenado", titulo: "Sistemas de descarga y cisternas", canal: "Geberit España", duracion: "Ver enlace", url: "https://www.geberit.es/productos-para-el-bano/sistemas-de-instalacion-y-descarga/" },
-    ]
-  },
-  {
-    id: "043",
-    estancia: "Baño",
-    nombre: "La cisterna no se llena",
-    sintomas: "La cisterna está vacía y no entra agua. Primero comprueba si el lavabo tiene agua. Puede ser la llave cerrada, el flotador atascado o la válvula de llenado averiada.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "🚱 Cisterna sin llenado · válvula", titulo: "Toilet tank not filling", canal: "Fluidmaster", duracion: "Ver enlace", url: "https://www.fluidmaster.com/toilet-problems/toilet-tank-wont-fill/" },
-      { etiqueta: "🔧 Mecanismos y recambios", titulo: "Mecanismos para cisternas", canal: "Roca España", duracion: "Ver enlace", url: "https://www.roca.es/productos/cisternas-mecanismos" },
-    ]
-  },
-  {
-    id: "044",
-    estancia: "Baño",
-    nombre: "El pulsador de la cisterna no funciona",
-    sintomas: "Al pulsar el botón el WC no descarga. La prueba clave es accionar directamente la válvula: si descarga, el fallo está en el pulsador o las varillas; si no, en el mecanismo.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🔘 Pulsadores y mecanismos", titulo: "Pulsadores y mecanismos de cisterna", canal: "Roca España", duracion: "Ver enlace", url: "https://www.roca.es/productos/cisternas-mecanismos" },
-      { etiqueta: "🪛 Placas y pulsadores empotrados", titulo: "Pulsadores de descarga y accesorios", canal: "Geberit España", duracion: "Ver enlace", url: "https://www.geberit.es/productos-para-el-bano/pulsadores-de-descarga-y-accesorios/" },
-    ]
-  },
-  {
-    id: "045",
-    estancia: "Baño",
-    nombre: "El WC no descarga con suficiente fuerza",
-    sintomas: "La descarga es débil o no arrastra bien. Puede ser el nivel bajo de la cisterna, la válvula que cierra pronto, cal en los orificios o un atasco parcial. Distinguir cuál es el problema antes de actuar.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "🌊 Descarga débil · diagnóstico", titulo: "Problemas de descarga del inodoro", canal: "Fluidmaster", duracion: "Ver enlace", url: "https://www.fluidmaster.com/toilet-problems/weak-toilet-flush/" },
-      { etiqueta: "🚽 Mecanismos y repuestos WC", titulo: "Inodoros y sistemas de descarga", canal: "Roca España", duracion: "Ver enlace", url: "https://www.roca.es/productos/inodoros" },
-    ]
-  },
-  {
-    id: "046",
-    estancia: "Baño",
-    nombre: "El WC está atascado",
-    sintomas: "El inodoro no desagua o lo hace muy lentamente. No vuelvas a tirar de la cadena si el nivel está alto. Empieza con un desatascador específico para WC.",
-    nivel: "Fácil/medio",
-    videos: [
-      { etiqueta: "🪠 Desatascar inodoro paso a paso", titulo: "Cómo desatascar un inodoro", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-desatascar-un-inodoro.html" },
-      { etiqueta: "🔧 Diagnóstico y técnicas", titulo: "Toilet clogged: how to unclog", canal: "Fluidmaster", duracion: "Ver enlace", url: "https://www.fluidmaster.com/toilet-problems/clogged-toilet/" },
-    ]
-  },
-  {
-    id: "047",
-    estancia: "Baño",
-    nombre: "El agua del WC sube demasiado al tirar",
-    sintomas: "Al tirar de la cadena el agua sube mucho en la taza antes de bajar lentamente. Es señal de atasco parcial en el desagüe, no de falta de fuerza en la cisterna.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "⬆️ Agua sube y baja lento", titulo: "Toilet bowl water rises then drains slowly", canal: "Fluidmaster", duracion: "Ver enlace", url: "https://www.fluidmaster.com/toilet-problems/clogged-toilet/" },
-      { etiqueta: "🪠 Desatascar inodoro", titulo: "Cómo desatascar un inodoro", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-desatascar-un-inodoro.html" },
-    ]
-  },
-  {
-    id: "048",
-    estancia: "Baño",
-    nombre: "Sale agua por la base del inodoro",
-    sintomas: "Aparece agua alrededor de la base del WC. Puede ser la junta de desagüe, una fuga de la cisterna que escurre, o condensación. Seca todo y localiza la primera gota antes de actuar.",
-    nivel: "Atención",
-    videos: [
-      { etiqueta: "💧 Fuga en la base del inodoro", titulo: "Water leaking from base of toilet", canal: "Fluidmaster", duracion: "Ver enlace", url: "https://www.fluidmaster.com/toilet-problems/toilet-leaking-at-base/" },
-      { etiqueta: "🚽 Mecanismos y sanitarios", titulo: "Inodoros y sistemas", canal: "Roca España", duracion: "Ver enlace", url: "https://www.roca.es/productos/inodoros" },
-    ]
-  },
-  {
-    id: "049",
-    estancia: "Baño",
-    nombre: "El inodoro se mueve",
-    sintomas: "El WC se balancea al sentarse. Las fijaciones están sueltas o el apoyo es irregular. Hay que corregirlo cuanto antes para evitar que dañe la junta de desagüe.",
-    nivel: "Atención",
-    videos: [
-      { etiqueta: "↔️ Inodoro que se mueve", titulo: "Toilet rocking or loose at base", canal: "Fluidmaster", duracion: "Ver enlace", url: "https://www.fluidmaster.com/toilet-problems/toilet-rocking-or-loose/" },
-      { etiqueta: "🔩 Sanitarios Roca", titulo: "Inodoros Roca", canal: "Roca España", duracion: "Ver enlace", url: "https://www.roca.es/productos/inodoros" },
-    ]
-  },
-  {
-    id: "050",
-    estancia: "Baño",
-    nombre: "El WC huele mal",
-    sintomas: "Hay mal olor en el baño que parece venir del inodoro. Puede ser suciedad, la conexión de desagüe defectuosa o un sifón cercano seco. Primero limpia y después investiga.",
-    nivel: "Diagnóstico",
-    videos: [
-      { etiqueta: "👃 Olor a alcantarilla diagnóstico", titulo: "Toilet smells bad: causes and solutions", canal: "Fluidmaster", duracion: "Ver enlace", url: "https://www.fluidmaster.com/toilet-problems/sewer-smell-in-bathroom/" },
-      { etiqueta: "🚽 Mecanismos y sanitarios", titulo: "Inodoros Roca", canal: "Roca España", duracion: "Ver enlace", url: "https://www.roca.es/productos/inodoros" },
-    ]
-  },
-  {
-    id: "051",
-    estancia: "Baño",
-    nombre: "La tapa del inodoro está floja o desplazada",
-    sintomas: "La tapa o el asiento del WC se mueve lateralmente o no queda centrado. Casi siempre es un problema de fijaciones flojas que se resuelve en minutos sin cambiar nada.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🪑 Tapas y asientos de inodoro", titulo: "Tapas y asientos de inodoro", canal: "Roca España", duracion: "Ver enlace", url: "https://www.roca.es/productos/tapas-de-inodoro" },
-      { etiqueta: "🔩 Guía de sustitución y ajuste", titulo: "Toilet seat fitting guide", canal: "Geberit", duracion: "Ver enlace", url: "https://www.geberit.es/productos-para-el-bano/pulsadores-de-descarga-y-accesorios/" },
-    ]
-  },
-  {
-    id: "052",
-    estancia: "Baño",
-    nombre: "El lavabo desagua lentamente",
-    sintomas: "El agua baja pero cada vez más despacio. Suele ser pelos y jabón acumulados en el tapón o el sifón. Mejor actuar antes de que se atasque del todo.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "🐌 Desagüe lento lavabo", titulo: "Cómo desatascar un lavabo", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-desatascar-lavabo.html" },
-      { etiqueta: "🧽 Limpiar sifón y desagüe", titulo: "Limpiar sifón y desatascar", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html" },
-    ]
-  },
-  {
-    id: "053",
-    estancia: "Baño",
-    nombre: "El lavabo está completamente atascado",
-    sintomas: "El agua no baja en absoluto. No añadas más agua. Empieza por el tapón y la ventosa; si no funciona, desmonta el sifón. Si el sifón está libre, el atasco está más dentro.",
-    nivel: "Fácil/medio",
-    videos: [
-      { etiqueta: "🚫 Lavabo completamente atascado", titulo: "Cómo desatascar un lavabo", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-desatascar-lavabo.html" },
-      { etiqueta: "🪣 Sifón y atasco profundo", titulo: "Cómo limpiar un sifón y desatascar", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html" },
-    ]
-  },
-  {
-    id: "054",
-    estancia: "Baño",
-    nombre: "El sifón del lavabo pierde agua",
-    sintomas: "Gotea agua bajo el lavabo al usarlo. Puede ser una tuerca floja, una junta mal colocada o el sifón fisurado. Seca todo y localiza la primera gota antes de desmontar.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "💧 Juntas y sifón · desagüe lavabo", titulo: "Cómo instalar el desagüe de un fregadero", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-el-desague-de-un-fregadero.html" },
-      { etiqueta: "🧽 Limpiar sifón y revisar uniones", titulo: "Cómo limpiar un sifón y desatascar", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-limpiar-un-sifon-y-desatascar-el-fregadero.html" },
-    ]
-  },
-  {
-    id: "055",
-    estancia: "Baño",
-    nombre: "El lavabo huele mal",
-    sintomas: "Hay mal olor en el lavabo. Suele ser biofilm en el tapón, el rebosadero o el sifón. No olvides limpiar el rebosadero interior, que es el foco más olvidado.",
-    nivel: "Fácil",
-    videos: [
-      { etiqueta: "👃 Malos olores desagüe lavabo", titulo: "Malos olores persistentes: causas y soluciones", canal: "Bricocrack", duracion: "Ver enlace", url: "https://www.youtube.com/watch?v=SlBkYAhe04s" },
-      { etiqueta: "🧽 Limpiar sifón paso a paso", titulo: "Limpiar sifón fregadero", canal: "Reparaciones del Hogar", duracion: "Ver enlace", url: "https://www.youtube.com/watch?v=QtOXr7AN2Kc" },
-    ]
-  },
-
-// Inicio — si viene con ?averia=001 desde el PDF, abre directamente esa avería
-const params = new URLSearchParams(window.location.search);
-const averiaParam = params.get("averia");
+var params = new URLSearchParams(window.location.search);
+var averiaParam = params.get("averia");
 if (averiaParam) {
   renderLista(AVERIAS);
   verAveria(averiaParam);
