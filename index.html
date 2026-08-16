@@ -301,11 +301,12 @@ const AVERIAS = [
     id: "001",
     estancia: "Cocina",
     nombre: "El fregadero gotea",
-    sintomas: "Goteo en grifo, sifón, latiguillos o desagüe",
+    sintomas: "Gotea el grifo, hay agua bajo el fregadero o humedad en la pared. El origen puede ser una junta, el sifón, un latiguillo o el propio grifo.",
     nivel: "Fácil",
     videos: [
-      // { etiqueta: "Vídeo recomendado", titulo: "Cómo reparar un grifo que gotea", canal: "BricoDepot España", duracion: "7 min", url: "https://youtube.com/watch?v=XXX" },
-      // { etiqueta: "Alternativa", titulo: "Cambiar latiguillo sin fontanero", canal: "Manitas en Casa", duracion: "5 min", url: "https://youtube.com/watch?v=YYY" },
+      { etiqueta: "🚰 Gotea el grifo", titulo: "Grifo monomando gotea — cómo desmontarlo y repararlo", canal: "FONTANERIAcaceres.es", duracion: "Vídeo completo", url: "https://www.youtube.com/watch?v=5xTkh0moiM8" },
+      { etiqueta: "💧 Pierde por latiguillo o llave", titulo: "Reparar fuga en latiguillo paso a paso", canal: "BricoFácil Estudios", duracion: "Vídeo completo", url: "https://www.youtube.com/watch?v=cgNZWYTetrQ" },
+      { etiqueta: "🔧 Pierde debajo al usar el fregadero", titulo: "Cómo reparar un sifón que pierde agua", canal: "ManoMano", duracion: "Vídeo + artículo", url: "https://www.manomano.es/consejos/como-reparar-un-sifon-que-se-sale-7892" },
     ]
   },
   {
@@ -588,8 +589,15 @@ window.addEventListener("popstate", () => {
   }
 });
 
-// Inicio
-renderLista(AVERIAS);
+// Inicio — si viene con ?averia=001 desde el PDF, abre directamente esa avería
+const params = new URLSearchParams(window.location.search);
+const averiaParam = params.get("averia");
+if (averiaParam) {
+  renderLista(AVERIAS);
+  verAveria(averiaParam);
+} else {
+  renderLista(AVERIAS);
+}
 </script>
 </body>
 </html>
