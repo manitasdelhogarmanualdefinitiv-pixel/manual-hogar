@@ -705,6 +705,62 @@ window.addEventListener("popstate", () => {
       { etiqueta: "🧽 Limpieza y mantenimiento campanas", titulo: "Ayuda y asistencia para campanas extractoras", canal: "Bosch Home España", duracion: "Ver enlace", url: "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas" },
     ]
   },
+  {
+    id: "026",
+    estancia: "Cocina",
+    nombre: "La luz de la campana no funciona",
+    sintomas: "El motor de la campana funciona pero la iluminación no. Puede ser una bombilla agotada, un módulo LED o un fallo en el mando. Identifica el modelo antes de comprar nada.",
+    nivel: "Fácil",
+    videos: [
+      { etiqueta: "💡 Averías bombillas y campanas", titulo: "Averías comunes de campanas extractoras", canal: "Teka España", duracion: "Ver enlace", url: "https://www.teka.com/es-es/inspiracion/consejos-y-mantenimiento/uso/averias-campana-extractora/" },
+      { etiqueta: "🔧 Soporte oficial por modelo", titulo: "Ayuda y asistencia para campanas", canal: "Bosch Home España", duracion: "Ver enlace", url: "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas" },
+    ]
+  },
+  {
+    id: "027",
+    estancia: "Cocina",
+    nombre: "La campana vibra",
+    sintomas: "La campana produce una vibración molesta al funcionar. Puede ser un filtro mal colocado, una fijación floja, el conducto o la turbina. Identifica cuándo empeora antes de desmontar nada.",
+    nivel: "Diagnóstico",
+    videos: [
+      { etiqueta: "❓ Preguntas frecuentes vibración y ruido", titulo: "Preguntas frecuentes de campanas extractoras", canal: "Teka Soporte España", duracion: "Ver enlace", url: "https://www.teka.com/es-es/faq_cat/campanas-faq/" },
+      { etiqueta: "⚙️ Ruidos y vibraciones anómalas", titulo: "Por qué una campana deja de funcionar correctamente", canal: "Teka España", duracion: "Ver enlace", url: "https://www.teka.com/es-es/inspiracion/por-que-mi-campana-extractora-no-funciona/" },
+    ]
+  },
+  {
+    id: "028",
+    estancia: "Cocina",
+    nombre: "Una puerta de armario está caída o desalineada",
+    sintomas: "La puerta de un mueble de cocina no cierra bien, roza con la vecina o está más baja de un lado. Las bisagras modernas permiten ajuste en tres direcciones sin cambiar ninguna pieza.",
+    nivel: "Fácil",
+    videos: [
+      { etiqueta: "🔧 Ajuste tridimensional bisagras", titulo: "Montaje y ajuste de bisagras", canal: "Blum España", duracion: "Ver enlace", url: "https://www.blum.com/es/es/services/assembly-adjustment/" },
+      { etiqueta: "📖 CLIP top ajuste 3D", titulo: "CLIP top: montaje y ajuste tridimensional", canal: "Blum España", duracion: "Ver enlace", url: "https://www.blum.com/es/es/products/hingesystems/clip-top/assembly/" },
+      { etiqueta: "🏠 Ejemplo sistema cocina", titulo: "METOD: regulación de bisagras", canal: "IKEA España", duracion: "Ver enlace", url: "https://www.ikea.com/es/es/p/metod-armario-para-fregadero-con-puerta-s29586227/" },
+    ]
+  },
+  {
+    id: "029",
+    estancia: "Cocina",
+    nombre: "Una bisagra de cocina está floja o arrancada",
+    sintomas: "La bisagra del mueble se mueve o ha arrancado del tablero. Si el tornillo simplemente se aflojó, se reaprecia. Si gira en vacío, el agujero del tablero está dañado.",
+    nivel: "Fácil/medio",
+    videos: [
+      { etiqueta: "🔩 Sistemas de bisagras y montaje", titulo: "Sistemas de bisagras y ayudas de montaje", canal: "Blum España", duracion: "Ver enlace", url: "https://www.blum.com/es/es/products/hingesystems/overview/" },
+      { etiqueta: "🔧 Referencia alternativa", titulo: "Bisagras para muebles", canal: "Hettich España", duracion: "Ver enlace", url: "https://www.hettich.com/es-es/productos/bisagras" },
+    ]
+  },
+  {
+    id: "030",
+    estancia: "Cocina",
+    nombre: "Un cajón no abre o cierra correctamente",
+    sintomas: "El cajón se atasca, no entra del todo o cuesta moverlo. Vacíalo primero: un objeto detrás o el exceso de peso son las causas más frecuentes antes de revisar las guías.",
+    nivel: "Fácil",
+    videos: [
+      { etiqueta: "🗄 Montaje y ajuste herrajes", titulo: "Montaje y ajuste de herrajes", canal: "Blum España", duracion: "Ver enlace", url: "https://www.blum.com/es/es/services/assembly-adjustment/" },
+      { etiqueta: "📖 Cajón con cierre suave", titulo: "METOD/MAXIMERA cajón con cierre suave", canal: "IKEA España", duracion: "Ver enlace", url: "https://www.ikea.com/es/es/p/metod-maximera-armario-bajo-con-cajon-puerta-s99586059/" },
+    ]
+  },
 // Inicio — si viene con ?averia=001 desde el PDF, abre directamente esa avería
 const params = new URLSearchParams(window.location.search);
 const averiaParam = params.get("averia");
