@@ -655,6 +655,56 @@ window.addEventListener("popstate", () => {
   }
 });
 
+  {
+    id: "021",
+    estancia: "Cocina",
+    nombre: "El mueble bajo fregadero está hinchado por humedad",
+    sintomas: "El tablero del mueble bajo el fregadero está abombado o blando. Primero hay que localizar y reparar la fuga; después secar y valorar si el tablero se puede recuperar o hay que sustituirlo.",
+    nivel: "Fácil/medio",
+    videos: [
+      { etiqueta: "📖 Sellado y prevención de humedad", titulo: "Cómo instalar un fregadero", canal: "Leroy Merlin España", duracion: "Ver enlace", url: "https://www.leroymerlin.es/ideas-y-consejos/paso-a-paso/como-instalar-un-fregadero.html" },
+    ]
+  },
+  {
+    id: "022",
+    estancia: "Cocina",
+    nombre: "La campana extractora no enciende",
+    sintomas: "La campana no da ninguna señal al encenderla: ni luz ni motor. Empieza comprobando la toma de corriente con otro aparato antes de tocar nada de la campana.",
+    nivel: "Diagnóstico",
+    videos: [
+      { etiqueta: "🔌 Ayuda oficial de fabricante", titulo: "Ayuda y asistencia para campanas extractoras", canal: "Bosch Home España", duracion: "Ver enlace", url: "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas" },
+    ]
+  },
+  {
+    id: "023",
+    estancia: "Cocina",
+    nombre: "La campana enciende pero no aspira",
+    sintomas: "La campana se enciende y el motor suena, pero aspira poco o nada. La primera causa son los filtros saturados de grasa o el filtro de carbón en modelos de recirculación.",
+    nivel: "Fácil",
+    videos: [
+      { etiqueta: "🧽 Limpieza y mantenimiento de filtros", titulo: "Ayuda y asistencia para campanas extractoras", canal: "Bosch Home España", duracion: "Ver enlace", url: "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas" },
+    ]
+  },
+  {
+    id: "024",
+    estancia: "Cocina",
+    nombre: "La campana hace demasiado ruido",
+    sintomas: "La campana hace más ruido de lo normal: vibración, traqueteo, silbido o roce. La mayoría de las veces es un filtro mal colocado o una fijación floja.",
+    nivel: "Diagnóstico",
+    videos: [
+      { etiqueta: "🔊 Diagnóstico y mantenimiento campanas", titulo: "Ayuda y asistencia para campanas extractoras", canal: "Bosch Home España", duracion: "Ver enlace", url: "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas" },
+    ]
+  },
+  {
+    id: "025",
+    estancia: "Cocina",
+    nombre: "La campana gotea grasa",
+    sintomas: "Aparecen gotas pegajosas amarillas o marrones cayendo de la campana. Suele ser un filtro metálico saturado que no puede retener más grasa.",
+    nivel: "Fácil",
+    videos: [
+      { etiqueta: "🧽 Limpieza y mantenimiento campanas", titulo: "Ayuda y asistencia para campanas extractoras", canal: "Bosch Home España", duracion: "Ver enlace", url: "https://www.bosch-home.es/servicio-oficial/ayuda-y-asistencia/campanas" },
+    ]
+  },
 // Inicio — si viene con ?averia=001 desde el PDF, abre directamente esa avería
 const params = new URLSearchParams(window.location.search);
 const averiaParam = params.get("averia");
