@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual Definitivo del Hogar — Centro de Recursos</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f4f1;
+      color: #1a1a1a;
+    }
+
+    /* HEADER */
+    .header {
+      background: #1c3a1c;
+      padding: 20px 16px 16px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .header-brand {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #7ab87a;
+      margin-bottom: 6px;
+    }
+    .header-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .search-wrap {
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 11px 16px 11px 40px;
+      border-radius: 10px;
+      border: none;
+      font-size: 15px;
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      outline: none;
+    }
+    .search-input::placeholder { color: rgba(255,255,255,0.5); }
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255,255,255,0.5);
+      font-size: 16px;
+      pointer-events: none;
+    }
+
+    /* VISTA LISTA — página principal */
+    #vista-lista { display: block; }
+    #vista-averia { display: none; }
+
+    .estancia-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+      padding: 20px 16px 8px;
+    }
+
+    .averia-item {
+      background: #fff;
+      margin: 0 12px 8px;
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+      transition: box-shadow 0.15s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .averia-item:active { box-shadow: 0 0 0 rgba(0,0,0,0); background: #f0f0f0; }
+
+    .averia-id-badge {
+      font-size: 11px;
+      font-weight: 800;
+      color: #7ab87a;
+      min-width: 28px;
+      letter-spacing: 0.5px;
+    }
+    .averia-info { flex: 1; }
+    .averia-nombre {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1a1a1a;
+      line-height: 1.3;
+    }
+    .averia-tags {
+      display: flex;
+      gap: 6px;
+      margin-top: 4px;
+      flex-wrap: wrap;
+    }
+    .tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    .tag-estancia { background: #e6f0e6; color: #2d5a2d; }
+    .tag-nivel-facil { background: #e8f5e9; color: #2e7d32; }
+    .tag-nivel-media { background: #fff3e0; color: #e65100; }
+    .tag-nivel-dificil { background: #fce4ec; color: #c62828; }
+    .tag-sin-video { background: #f3f3f3; color: #aaa; }
+
+    .averia-arrow {
+      color: #ccc;
+      font-size: 18px;
+    }
+
+    /* VISTA DETALLE — avería individual */
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 16px;
+      font-size: 14px;
+      color: #7ab87a;
+      font-weight: 600;
+      cursor: pointer;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+    }
+
+    .detalle-hero {
+      background: #fff;
+      padding: 20px 16px 18px;
+      border-bottom: 1px solid #eee;
+    }
+    .detalle-id {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #7ab87a;
+      margin-bottom: 6px;
+    }
+    .detalle-titulo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #1c3a1c;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .sintomas-box {
+      margin: 16px 16px 0;
+      background: #fffbec;
+      border-left: 4px solid #f0c040;
+      border-radius: 0 8px 8px 0;
+      padding: 12px 14px;
+    }
+    .sintomas-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #b8920a;
+      margin-bottom: 4px;
+    }
+    .sintomas-text {
+      font-size: 14px;
+      color: #5a4400;
+      line-height: 1.5;
+    }
+
+    .videos-seccion {
+      padding: 20px 16px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    .video-card {
+      background: #fff;
+      margin: 0 12px 10px;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+    }
+    .video-etiqueta {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #7ab87a;
+      margin-bottom: 6px;
+    }
+    .video-titulo {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1a1a1a;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .video-meta {
+      display: flex;
+      gap: 12px;
+      font-size: 13px;
+      color: #999;
+      margin-bottom: 12px;
+    }
+    .btn-ver {
+      display: block;
+      background: #1c3a1c;
+      color: #fff;
+      text-align: center;
+      padding: 13px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+    .btn-ver:active { background: #2d5a2d; }
+
+    .sin-video-msg {
+      margin: 12px 16px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      color: #bbb;
+      font-size: 14px;
+    }
+
+    .footer {
+      padding: 24px 16px 32px;
+      text-align: center;
+      font-size: 11px;
+      color: #ccc;
+      line-height: 1.7;
+    }
+
+    .no-resultados {
+      text-align: center;
+      padding: 48px 16px;
+      color: #bbb;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-brand">Manual Definitivo del Hogar</div>
+  <div class="header-title">Centro de Recursos</div>
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input
+      class="search-input"
+      type="text"
+      id="buscador"
+      placeholder="Busca una avería..."
+      oninput="filtrar()"
+    >
+  </div>
+</div>
+
+<!-- VISTA LISTA -->
+<div id="vista-lista"></div>
+
+<!-- VISTA DETALLE -->
+<div id="vista-averia">
+  <div class="back-btn" onclick="volverLista()">← Todas las averías</div>
+  <div id="detalle-contenido"></div>
+  <div class="footer">
+    Los vídeos pertenecen a sus respectivos autores y canales.<br>
+    El Manual Definitivo del Hogar únicamente enlaza recursos externos como apoyo complementario.
+  </div>
+</div>
+
+
+<script>
+// ============================================================
+// AQUÍ VAN TUS AVERÍAS
+// Añade/edita aquí. Cuando tengas vídeos, pon la URL de YouTube.
+// Si no hay vídeo aún, deja url: ""
+// ============================================================
+const AVERIAS = [
+  {
+    id: "001",
+    estancia: "Cocina",
+    nombre: "El fregadero gotea",
+    sintomas: "Goteo en grifo, sifón, latiguillos o desagüe",
+    nivel: "Fácil",
+    videos: [
+      // { etiqueta: "Vídeo recomendado", titulo: "Cómo reparar un grifo que gotea", canal: "BricoDepot España", duracion: "7 min", url: "https://youtube.com/watch?v=XXX" },
+      // { etiqueta: "Alternativa", titulo: "Cambiar latiguillo sin fontanero", canal: "Manitas en Casa", duracion: "5 min", url: "https://youtube.com/watch?v=YYY" },
+    ]
+  },
+  {
+    id: "002",
+    estancia: "Cocina",
+    nombre: "El fregadero huele mal",
+    sintomas: "Olor a huevo podrido o humedad al abrir el grifo o acercarse al fregadero",
+    nivel: "Fácil",
+    videos: []
+  },
+  {
+    id: "003",
+    estancia: "Cocina",
+    nombre: "El fregadero está atascado",
+    sintomas: "El agua no drena o drena muy despacio",
+    nivel: "Fácil",
+    videos: []
+  },
+  {
+    id: "004",
+    estancia: "Cocina",
+    nombre: "El grifo no cierra bien",
+    sintomas: "El agua sigue saliendo aunque el grifo esté cerrado",
+    nivel: "Fácil",
+    videos: []
+  },
+  {
+    id: "005",
+    estancia: "Cocina",
+    nombre: "La encimera tiene manchas que no salen",
+    sintomas: "Manchas oscuras o blancas permanentes en la encimera de mármol, granito o laminado",
+    nivel: "Fácil",
+    videos: []
+  },
+  {
+    id: "006",
+    estancia: "Baño",
+    nombre: "El inodoro no para de hacer ruido",
+    sintomas: "Sonido de agua corriendo constantemente, incluso sin tirar de la cadena",
+    nivel: "Fácil",
+    videos: []
+  },
+  {
+    id: "007",
+    estancia: "Baño",
+    nombre: "El inodoro no descarga bien",
+    sintomas: "Al tirar de la cadena el agua sale con poca fuerza o no vacía completamente",
+    nivel: "Fácil",
+    videos: []
+  },
+  {
+    id: "008",
+    estancia: "Baño",
+    nombre: "La ducha pierde agua por el grifo",
+    sintomas: "Goteo constante en el grifo de la ducha aunque esté cerrado",
+    nivel: "Media",
+    videos: []
+  },
+  {
+    id: "009",
+    estancia: "Baño",
+    nombre: "El desagüe de la ducha está atascado",
+    sintomas: "El agua se acumula en el suelo de la ducha y tarda en bajar",
+    nivel: "Fácil",
+    videos: []
+  },
+  {
+    id: "010",
+    estancia: "Baño",
+    nombre: "Hay humedad en la pared del baño",
+    sintomas: "Manchas oscuras, pintura que se levanta o paredes húmedas al tacto",
+    nivel: "Media",
+    videos: []
+  },
+  {
+    id: "011",
+    estancia: "Electricidad",
+    nombre: "Se va la luz en toda la casa",
+    sintomas: "Corte general de electricidad, el cuadro eléctrico ha saltado",
+    nivel: "Fácil",
+    videos: []
+  },
+  {
+    id: "012",
+    estancia: "Electricidad",
+    nombre: "Un enchufe no funciona",
+    sintomas: "El enchufe no da corriente aunque los demás sí funcionan",
+    nivel: "Media",
+    videos: []
+  },
+  {
+    id: "013",
+    estancia: "Electricidad",
+    nombre: "Una bombilla parpadea o no enciende",
+    sintomas: "La luz titila o no responde al interruptor",
+    nivel: "Fácil",
+    videos: []
+  },
+  {
+    id: "014",
+    estancia: "Calefacción",
+    nombre: "El radiador no calienta",
+    sintomas: "El radiador está frío aunque la calefacción esté encendida",
+    nivel: "Fácil",
+    videos: []
+  },
+  {
+    id: "015",
+    estancia: "Calefacción",
+    nombre: "El radiador hace ruido",
+    sintomas: "Sonido de burbujeo, golpes o silbidos cuando calienta",
+    nivel: "Fácil",
+    videos: []
+  },
+  {
+    id: "016",
+    estancia: "Puertas y ventanas",
+    nombre: "La puerta no cierra bien",
+    sintomas: "La puerta roza, no encaja en el marco o no hace tope correctamente",
+    nivel: "Fácil",
+    videos: []
+  },
+  {
+    id: "017",
+    estancia: "Puertas y ventanas",
+    nombre: "La cerradura está atascada",
+    sintomas: "La llave no gira o cuesta mucho mover el bombín",
+    nivel: "Fácil",
+    videos: []
+  },
+  {
+    id: "018",
+    estancia: "Persianas",
+    nombre: "La persiana no sube ni baja",
+    sintomas: "La cinta está rota, atascada o la persiana se ha salido de guía",
+    nivel: "Media",
+    videos: []
+  },
+  {
+    id: "019",
+    estancia: "Humedades",
+    nombre: "Hay manchas de humedad en el techo",
+    sintomas: "Manchas amarillas o negras en el techo, pintura que se desprende",
+    nivel: "Media",
+    videos: []
+  },
+  {
+    id: "020",
+    estancia: "Salón",
+    nombre: "El parqué está crujiendo",
+    sintomas: "El suelo hace ruido al caminar sobre él",
+    nivel: "Media",
+    videos: []
+  },
+];
+
+// ============================================================
+// LÓGICA — no tocar
+// ============================================================
+
+function nivelClass(nivel) {
+  if (!nivel) return "";
+  const n = nivel.toLowerCase().replace(/[^a-záéíóúü]/gi,"");
+  if (n.includes("facil") || n.includes("fácil")) return "tag-nivel-facil";
+  if (n.includes("media")) return "tag-nivel-media";
+  if (n.includes("dificil") || n.includes("difícil")) return "tag-nivel-dificil";
+  return "tag-nivel-facil";
+}
+
+function renderLista(lista) {
+  const container = document.getElementById("vista-lista");
+  if (lista.length === 0) {
+    container.innerHTML = `<div class="no-resultados">No se encontró ninguna avería.<br>Prueba con otras palabras.</div>`;
+    return;
+  }
+
+  // Agrupar por estancia
+  const grupos = {};
+  lista.forEach(a => {
+    if (!grupos[a.estancia]) grupos[a.estancia] = [];
+    grupos[a.estancia].push(a);
+  });
+
+  let html = "";
+  for (const estancia in grupos) {
+    html += `<div class="estancia-label">${estancia}</div>`;
+    grupos[estancia].forEach(a => {
+      const tieneVideo = a.videos && a.videos.length > 0;
+      html += `
+        <div class="averia-item" onclick="verAveria('${a.id}')">
+          <div class="averia-id-badge">${a.id}</div>
+          <div class="averia-info">
+            <div class="averia-nombre">${a.nombre}</div>
+            <div class="averia-tags">
+              <span class="tag tag-estancia">${a.estancia}</span>
+              ${a.nivel ? `<span class="tag ${nivelClass(a.nivel)}">${a.nivel}</span>` : ""}
+              ${!tieneVideo ? `<span class="tag tag-sin-video">Vídeo próximamente</span>` : ""}
+            </div>
+          </div>
+          <div class="averia-arrow">›</div>
+        </div>`;
+    });
+  }
+  container.innerHTML = html;
+}
+
+function filtrar() {
+  const q = document.getElementById("buscador").value.toLowerCase().trim();
+  if (!q) { renderLista(AVERIAS); return; }
+  const filtradas = AVERIAS.filter(a =>
+    a.nombre.toLowerCase().includes(q) ||
+    a.estancia.toLowerCase().includes(q) ||
+    (a.sintomas && a.sintomas.toLowerCase().includes(q))
+  );
+  renderLista(filtradas);
+}
+
+function verAveria(id) {
+  const a = AVERIAS.find(x => x.id === id);
+  if (!a) return;
+
+  window.scrollTo(0, 0);
+  document.getElementById("vista-lista").style.display = "none";
+  document.getElementById("vista-averia").style.display = "block";
+
+  const etiquetas = ["Vídeo recomendado", "Alternativa", "Otra opción"];
+  let videosHTML = "";
+
+  if (a.videos && a.videos.length > 0) {
+    videosHTML = `<div class="videos-seccion">Vídeos seleccionados</div>`;
+    a.videos.forEach((v, i) => {
+      videosHTML += `
+        <div class="video-card">
+          <div class="video-etiqueta">${v.etiqueta || etiquetas[i] || "Vídeo"}</div>
+          <div class="video-titulo">${v.titulo}</div>
+          <div class="video-meta">
+            <span>📺 ${v.canal}</span>
+            <span>⏱ ${v.duracion}</span>
+          </div>
+          <a href="${v.url}" target="_blank" class="btn-ver">▶ VER VÍDEO</a>
+        </div>`;
+    });
+  } else {
+    videosHTML = `
+      <div class="videos-seccion">Vídeos seleccionados</div>
+      <div class="sin-video-msg">
+        🎬 Vídeos en preparación.<br>Próximamente disponibles.
+      </div>`;
+  }
+
+  document.getElementById("detalle-contenido").innerHTML = `
+    <div class="detalle-hero">
+      <div class="detalle-id">AVERÍA ${a.id}</div>
+      <h1 class="detalle-titulo">${a.nombre}</h1>
+      <div class="averia-tags">
+        <span class="tag tag-estancia">${a.estancia}</span>
+        ${a.nivel ? `<span class="tag ${nivelClass(a.nivel)}">${a.nivel}</span>` : ""}
+      </div>
+    </div>
+    <div class="sintomas-box">
+      <div class="sintomas-label">¿Qué estás notando?</div>
+      <div class="sintomas-text">${a.sintomas}</div>
+    </div>
+    ${videosHTML}
+  `;
+}
+
+function volverLista() {
+  window.scrollTo(0, 0);
+  document.getElementById("vista-lista").style.display = "block";
+  document.getElementById("vista-averia").style.display = "none";
+  document.getElementById("buscador").value = "";
+  renderLista(AVERIAS);
+}
+
+// Manejar el botón atrás del móvil
+window.addEventListener("popstate", () => {
+  if (document.getElementById("vista-averia").style.display === "block") {
+    volverLista();
+  }
+});
+
+// Inicio
+renderLista(AVERIAS);
+</script>
+</body>
+</html>
